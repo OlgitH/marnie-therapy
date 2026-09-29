@@ -1,4 +1,4 @@
-example.com {
+:80 {
     root * /var/www/html/web
     encode gzip
 
