@@ -1,0 +1,7 @@
+example.com {
+    root * /var/www/html/web
+    encode gzip
+
+    php_fastcgi wordpress:9000
+    file_server
+}
