@@ -1,4 +1,4 @@
-:80 {
+marnietherapy.co.uk, www.marnietherapy.co.uk {
     root * /var/www/html/web
     encode gzip
 
