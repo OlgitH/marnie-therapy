@@ -1,4 +1,4 @@
-staging.oliverberman.net {
+:80 {
     root * /var/www/html/web
     encode gzip
 
