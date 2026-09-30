@@ -36,18 +36,20 @@ if ( ! defined( 'ABSPATH' ) ) {
 		</div>
 
 		<div class="site-header__actions">
-			<?php $header_phone = get_field( 'contact_phone', 'option' ); ?>
-			<?php if ( $header_phone ) : ?>
-				<a class="btn btn--call" href="tel:<?php echo esc_attr( preg_replace( '/[^+\d]/', '', $header_phone ) ); ?>">
-					<?php
-					printf(
-						/* translators: %s: phone number */
-						esc_html__( 'Call %s', 'marnie-therapy' ),
-						esc_html( $header_phone )
-					);
-					?>
-				</a>
-			<?php endif; ?>
+			<?php
+			$header_phone = get_field( 'contact_phone', 'option' );
+			$header_call_href  = $header_phone ? 'tel:' . preg_replace( '/[^+\d]/', '', $header_phone ) : '#contact';
+			$header_call_label = $header_phone
+				? sprintf(
+					/* translators: %s: phone number */
+					__( 'Call %s', 'marnie-therapy' ),
+					$header_phone
+				)
+				: __( 'Call Us', 'marnie-therapy' );
+			?>
+			<a class="btn btn--call" href="<?php echo esc_attr( $header_call_href ); ?>">
+				<?php echo esc_html( $header_call_label ); ?>
+			</a>
 
 			<button
 				type="button"

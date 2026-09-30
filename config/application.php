@@ -156,6 +156,10 @@ Config::define('WP_POST_REVISIONS', env('WP_POST_REVISIONS') ?? true);
 // Disable script concatenation
 Config::define('CONCATENATE_SCRIPTS', false);
 
+// Skip Rank Math's setup wizard/account-connect requirement so it works
+// immediately on every environment without a manual browser step.
+Config::define('RANK_MATH_REGISTRATION_SKIP', true);
+
 /**
  * Debugging Settings
  */

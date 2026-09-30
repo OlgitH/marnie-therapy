@@ -11,6 +11,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+// Rank Math (or any SEO plugin defining this) takes over title/meta/schema output,
+// so the theme's own tags are skipped to avoid duplicates.
+if ( defined( 'RANK_MATH_VERSION' ) ) {
+	return;
+}
+
 add_filter(
 	'document_title_parts',
 	function ( $title ) {
