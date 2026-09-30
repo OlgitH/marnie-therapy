@@ -45,7 +45,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 					__( 'Call %s', 'marnie-therapy' ),
 					$header_phone
 				)
-				: __( 'Call Us', 'marnie-therapy' );
+				: __( 'Book session', 'marnie-therapy' );
 			?>
 			<a class="btn btn--call" href="<?php echo esc_attr( $header_call_href ); ?>">
 				<?php echo esc_html( $header_call_label ); ?>
@@ -64,27 +64,27 @@ if ( ! defined( 'ABSPATH' ) ) {
 					<span class="nav-toggle__bar nav-toggle__bar--3"></span>
 				</span>
 			</button>
-
-			<nav class="primary-nav" id="primary-navigation" aria-label="<?php esc_attr_e( 'Primary', 'marnie-therapy' ); ?>">
-				<?php if ( has_nav_menu( 'primary' ) ) : ?>
-					<?php
-					wp_nav_menu(
-						array(
-							'theme_location' => 'primary',
-							'container'      => false,
-							'items_wrap'     => '<ul class="primary-nav__list">%3$s</ul>',
-						)
-					);
-					?>
-				<?php else : ?>
-					<ul class="primary-nav__list">
-						<li><a href="#therapy"><?php esc_html_e( 'Therapy', 'marnie-therapy' ); ?></a></li>
-						<li><a href="#about"><?php esc_html_e( 'About Marnie', 'marnie-therapy' ); ?></a></li>
-						<li><a href="#faq"><?php esc_html_e( 'FAQs', 'marnie-therapy' ); ?></a></li>
-						<li><a href="#contact"><?php esc_html_e( 'Contact', 'marnie-therapy' ); ?></a></li>
-					</ul>
-				<?php endif; ?>
-			</nav>
 		</div>
+
+		<nav class="primary-nav" id="primary-navigation" aria-label="<?php esc_attr_e( 'Primary', 'marnie-therapy' ); ?>">
+			<?php if ( has_nav_menu( 'primary' ) ) : ?>
+				<?php
+				wp_nav_menu(
+					array(
+						'theme_location' => 'primary',
+						'container'      => false,
+						'items_wrap'     => '<ul class="primary-nav__list">%3$s</ul>',
+					)
+				);
+				?>
+			<?php else : ?>
+				<ul class="primary-nav__list">
+					<li><a href="#therapy"><?php esc_html_e( 'Therapy', 'marnie-therapy' ); ?></a></li>
+					<li><a href="#about"><?php esc_html_e( 'About Marnie', 'marnie-therapy' ); ?></a></li>
+					<li><a href="#faq"><?php esc_html_e( 'FAQs', 'marnie-therapy' ); ?></a></li>
+					<li><a href="#contact"><?php esc_html_e( 'Contact', 'marnie-therapy' ); ?></a></li>
+				</ul>
+			<?php endif; ?>
+		</nav>
 	</div>
 </header>
