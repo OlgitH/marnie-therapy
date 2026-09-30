@@ -591,6 +591,15 @@ select:focus-visible,
 	scroll-margin-top: calc(var(--header-height) + 2.5rem - var(--space-6));
 }
 
+@media (max-width: 54rem) {
+	/* The sticky header is much shorter here (single row) than
+	   --header-height reflects (that's tuned for the taller desktop
+	   header), so recalculate against the real height, with a smaller gap. */
+	.section {
+		scroll-margin-top: calc(4.9rem + 1.25rem - var(--space-6));
+	}
+}
+
 .section--alt {
 	background-color: var(--color-sage-50);
 }
