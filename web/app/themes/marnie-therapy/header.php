@@ -35,54 +35,35 @@ if ( ! defined( 'ABSPATH' ) ) {
 			<?php endif; ?>
 		</div>
 
-		<div class="site-header__actions">
-			<?php $header_phone = get_field( 'contact_phone', 'option' ); ?>
-			<?php if ( $header_phone ) : ?>
-				<a class="btn btn--call" href="tel:<?php echo esc_attr( preg_replace( '/[^+\d]/', '', $header_phone ) ); ?>">
-					<?php
-					printf(
-						/* translators: %s: phone number */
-						esc_html__( 'Call %s', 'marnie-therapy' ),
-						esc_html( $header_phone )
-					);
-					?>
-				</a>
+		<button
+			type="button"
+			class="nav-toggle"
+			aria-expanded="false"
+			aria-controls="primary-navigation"
+		>
+			<span class="visually-hidden"><?php esc_html_e( 'Menu', 'marnie-therapy' ); ?></span>
+			<span aria-hidden="true">☰</span>
+		</button>
+
+		<nav class="primary-nav" id="primary-navigation" aria-label="<?php esc_attr_e( 'Primary', 'marnie-therapy' ); ?>">
+			<?php if ( has_nav_menu( 'primary' ) ) : ?>
+				<?php
+				wp_nav_menu(
+					array(
+						'theme_location' => 'primary',
+						'container'      => false,
+						'items_wrap'     => '<ul class="primary-nav__list">%3$s</ul>',
+					)
+				);
+				?>
+			<?php else : ?>
+				<ul class="primary-nav__list">
+					<li><a href="#therapy"><?php esc_html_e( 'Therapy', 'marnie-therapy' ); ?></a></li>
+					<li><a href="#about"><?php esc_html_e( 'About Marnie', 'marnie-therapy' ); ?></a></li>
+					<li><a href="#faq"><?php esc_html_e( 'FAQs', 'marnie-therapy' ); ?></a></li>
+					<li><a href="#contact"><?php esc_html_e( 'Contact', 'marnie-therapy' ); ?></a></li>
+				</ul>
 			<?php endif; ?>
-
-			<button
-				type="button"
-				class="nav-toggle"
-				aria-expanded="false"
-				aria-controls="primary-navigation"
-			>
-				<span class="visually-hidden"><?php esc_html_e( 'Menu', 'marnie-therapy' ); ?></span>
-				<span class="nav-toggle__bars" aria-hidden="true">
-					<span class="nav-toggle__bar nav-toggle__bar--1"></span>
-					<span class="nav-toggle__bar nav-toggle__bar--2"></span>
-					<span class="nav-toggle__bar nav-toggle__bar--3"></span>
-				</span>
-			</button>
-
-			<nav class="primary-nav" id="primary-navigation" aria-label="<?php esc_attr_e( 'Primary', 'marnie-therapy' ); ?>">
-				<?php if ( has_nav_menu( 'primary' ) ) : ?>
-					<?php
-					wp_nav_menu(
-						array(
-							'theme_location' => 'primary',
-							'container'      => false,
-							'items_wrap'     => '<ul class="primary-nav__list">%3$s</ul>',
-						)
-					);
-					?>
-				<?php else : ?>
-					<ul class="primary-nav__list">
-						<li><a href="#therapy"><?php esc_html_e( 'Therapy', 'marnie-therapy' ); ?></a></li>
-						<li><a href="#about"><?php esc_html_e( 'About Marnie', 'marnie-therapy' ); ?></a></li>
-						<li><a href="#faq"><?php esc_html_e( 'FAQs', 'marnie-therapy' ); ?></a></li>
-						<li><a href="#contact"><?php esc_html_e( 'Contact', 'marnie-therapy' ); ?></a></li>
-					</ul>
-				<?php endif; ?>
-			</nav>
-		</div>
+		</nav>
 	</div>
 </header>

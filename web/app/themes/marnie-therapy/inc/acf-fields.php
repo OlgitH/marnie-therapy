@@ -438,13 +438,6 @@ function marnie_register_site_settings_fields() {
 					'default_value' => 'marnietherapy@gmail.com',
 				),
 				array(
-					'key'          => 'field_mt_settings_phone',
-					'label'        => 'Contact Phone',
-					'name'         => 'contact_phone',
-					'type'         => 'text',
-					'instructions' => 'Shown as a "Call" button in the site header. Leave empty to hide it. Enter as you want it displayed, e.g. 01225 123 456.',
-				),
-				array(
 					'key'   => 'field_mt_settings_price',
 					'label' => 'Session Price',
 					'name'  => 'session_price',
