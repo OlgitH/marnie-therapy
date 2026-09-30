@@ -264,7 +264,7 @@ select:focus-visible,
 .site-header__inner {
 	display: flex;
 	align-items: center;
-	justify-content: space-between;
+	justify-content: flex-start;
 	padding-block: var(--space-2);
 	gap: var(--space-3);
 }
@@ -310,6 +310,7 @@ select:focus-visible,
 
 .primary-nav {
 	order: 1;
+	margin-left: auto;
 }
 
 .nav-toggle {
@@ -417,6 +418,7 @@ select:focus-visible,
 
 	.site-header__actions {
 		order: 0;
+		margin-left: auto;
 		gap: 0.6rem;
 	}
 
@@ -427,6 +429,7 @@ select:focus-visible,
 
 	.primary-nav {
 		order: 0;
+		margin-left: 0;
 		display: none;
 		width: 100%;
 	}
