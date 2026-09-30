@@ -301,6 +301,16 @@ select:focus-visible,
 	letter-spacing: 0.02em;
 }
 
+.site-branding__mobile-logo {
+	display: none;
+}
+
+.site-branding__mobile-logo img {
+	height: 2.8rem;
+	width: auto;
+	max-width: 100%;
+}
+
 .site-header__actions {
 	display: flex;
 	align-items: center;
@@ -410,6 +420,14 @@ select:focus-visible,
 
 	.site-branding__name {
 		font-size: 1.1rem;
+	}
+
+	.site-branding.has-mobile-logo .site-branding__desktop-logo {
+		display: none;
+	}
+
+	.site-branding.has-mobile-logo .site-branding__mobile-logo {
+		display: flex;
 	}
 
 	.site-header__inner {

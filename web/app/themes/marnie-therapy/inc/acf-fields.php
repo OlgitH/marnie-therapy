@@ -474,6 +474,15 @@ function marnie_register_site_settings_fields() {
 					'instructions' => 'An OpenStreetMap or Google Maps embed URL for the practice location.',
 				),
 				array(
+					'key'           => 'field_mt_settings_mobile_logo',
+					'label'         => 'Mobile Logo',
+					'name'          => 'mobile_logo',
+					'type'          => 'image',
+					'return_format' => 'array',
+					'preview_size'  => 'thumbnail',
+					'instructions'  => 'Optional compact logo shown in the header on small screens instead of the main site logo (Customizer). Best as a square or wide-but-short mark — leave empty to keep using the main logo on mobile.',
+				),
+				array(
 					'key'           => 'field_mt_settings_ukcp_logo',
 					'label'         => 'UKCP Logo',
 					'name'          => 'ukcp_logo',
