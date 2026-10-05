@@ -689,17 +689,18 @@ select:focus-visible,
 
 .section {
 	padding-block: var(--section-padding);
-	/* Anchor targets land with the section's top edge flush against the
-	   bottom of the sticky header, so none of the previous section shows.
-	   --header-offset is the measured header height (set in main.js); the
-	   fallbacks are the estimates above. The 1px tucks under the header's
-	   border to avoid a hairline seam. */
-	scroll-margin-top: calc(var(--header-offset, var(--header-height)) - 1px);
+	/* Anchor targets sit on the section itself, ahead of its own top
+	   padding, so subtracting the padding leaves the heading ~1rem below
+	   the sticky header (the section's top edge tucks behind the header,
+	   so nothing of the previous section shows). --header-offset is the
+	   measured header height (set in main.js); the fallbacks are the
+	   estimates above. */
+	scroll-margin-top: calc(var(--header-offset, var(--header-height)) + 1rem - var(--section-padding));
 }
 
 @media (max-width: 54rem) {
 	.section {
-		scroll-margin-top: calc(var(--header-offset, var(--header-height-mobile)) - 1px);
+		scroll-margin-top: calc(var(--header-offset, var(--header-height-mobile)) + 1rem - var(--section-padding));
 	}
 }
 
