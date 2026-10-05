@@ -77,6 +77,14 @@ function marnie_register_home_sections_fields() {
 									'default_value' => 'Marnie Therapy',
 								),
 								array(
+									'key'           => 'field_mt_hero_name_line',
+									'label'         => 'Name Line',
+									'name'          => 'name_line',
+									'type'          => 'text',
+									'instructions'  => 'Shown under the heading, e.g. Marnie Kavanagh.',
+									'default_value' => 'Marnie Kavanagh',
+								),
+								array(
 									'key'   => 'field_mt_hero_subheading',
 									'label' => 'Subheading',
 									'name'  => 'subheading',
@@ -150,7 +158,7 @@ function marnie_register_home_sections_fields() {
 						'layout_mt_about'         => array(
 							'key'        => 'layout_mt_about',
 							'name'       => 'about',
-							'label'      => 'About Marnie',
+							'label'      => 'About Me',
 							'display'    => 'block',
 							'sub_fields' => array(
 								array(
@@ -158,14 +166,7 @@ function marnie_register_home_sections_fields() {
 									'label' => 'Heading',
 									'name'  => 'heading',
 									'type'  => 'text',
-									'default_value' => 'About Marnie',
-								),
-								array(
-									'key'   => 'field_mt_about_name_line',
-									'label' => 'Name Line',
-									'name'  => 'name_line',
-									'type'  => 'text',
-									'default_value' => 'Marnie Kavanagh (formerly known as Marianne Black)',
+									'default_value' => 'About Me',
 								),
 								array(
 									'key'           => 'field_mt_about_photo',
@@ -184,22 +185,6 @@ function marnie_register_home_sections_fields() {
 									'tabs'    => 'visual',
 									'media_upload' => 0,
 									'toolbar' => 'basic',
-								),
-								array(
-									'key'          => 'field_mt_about_experience',
-									'label'        => 'Areas of Experience',
-									'name'         => 'experience_areas',
-									'type'         => 'repeater',
-									'layout'       => 'table',
-									'button_label' => 'Add Area',
-									'sub_fields'   => array(
-										array(
-											'key'   => 'field_mt_about_experience_label',
-											'label' => 'Label',
-											'name'  => 'label',
-											'type'  => 'text',
-										),
-									),
 								),
 							),
 						),

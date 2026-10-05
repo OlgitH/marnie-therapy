@@ -52,19 +52,20 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 			<div class="site-header__actions">
 				<?php
+				// Only shown when a phone number has been added in Site Settings.
 				$header_phone = get_field( 'contact_phone', 'option' );
-				$header_call_href  = $header_phone ? 'tel:' . preg_replace( '/[^+\d]/', '', $header_phone ) : '#contact';
-				$header_call_label = $header_phone
-					? sprintf(
-						/* translators: %s: phone number */
-						__( 'Call %s', 'marnie-therapy' ),
-						$header_phone
-					)
-					: __( 'Book session', 'marnie-therapy' );
-				?>
-				<a class="btn btn--call" href="<?php echo esc_attr( $header_call_href ); ?>">
-					<?php echo esc_html( $header_call_label ); ?>
-				</a>
+				if ( $header_phone ) :
+					?>
+					<a class="btn btn--call" href="<?php echo esc_attr( 'tel:' . preg_replace( '/[^+\d]/', '', $header_phone ) ); ?>">
+						<?php
+						printf(
+							/* translators: %s: phone number */
+							esc_html__( 'Call %s', 'marnie-therapy' ),
+							esc_html( $header_phone )
+						);
+						?>
+					</a>
+				<?php endif; ?>
 
 				<button
 					type="button"
@@ -96,7 +97,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 			<?php else : ?>
 				<ul class="primary-nav__list">
 					<li><a href="#therapy"><?php esc_html_e( 'Therapy', 'marnie-therapy' ); ?></a></li>
-					<li><a href="#about"><?php esc_html_e( 'About Marnie', 'marnie-therapy' ); ?></a></li>
+					<li><a href="#about"><?php esc_html_e( 'About Me', 'marnie-therapy' ); ?></a></li>
 					<li><a href="#faq"><?php esc_html_e( 'FAQs', 'marnie-therapy' ); ?></a></li>
 					<li><a href="#contact"><?php esc_html_e( 'Contact', 'marnie-therapy' ); ?></a></li>
 				</ul>

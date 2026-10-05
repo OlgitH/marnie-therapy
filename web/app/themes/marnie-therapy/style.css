@@ -3,7 +3,7 @@ Theme Name: Marnie Therapy
 Theme URI: https://marnietherapy.co.uk
 Author: Olly
 Description: Custom theme for Marnie Therapy, a relational psychotherapy practice in Bath. Calming, warm, accessible one-page brochure site built on ACF flexible content.
-Version: 1.1.0
+Version: 1.2.0
 Requires PHP: 8.1
 License: GNU General Public License v2 or later
 License URI: LICENSE
@@ -549,9 +549,16 @@ select:focus-visible,
 	opacity: 0.95;
 }
 
+.hero__name {
+	font-family: var(--font-heading);
+	font-size: 1.5rem;
+	letter-spacing: 0.02em;
+	margin: 0 0 var(--space-3);
+}
+
 .hero__quote {
 	margin: var(--space-4) auto 0;
-	max-width: 34rem;
+	max-width: 46rem;
 	font-family: var(--font-heading);
 	font-style: italic;
 	font-size: 1.35rem;
@@ -561,6 +568,14 @@ select:focus-visible,
 
 .hero__quote p {
 	margin: 0;
+}
+
+/* Keep the quote on a single line wherever there is room for it; below
+   this width it wraps normally so it never overflows the screen. */
+@media (min-width: 52rem) {
+	.hero__quote p {
+		white-space: nowrap;
+	}
 }
 
 .hero__quote cite {
@@ -613,10 +628,21 @@ select:focus-visible,
 	margin-bottom: var(--space-1);
 }
 
+/* Space between a section heading and the content beneath it. */
+.section .container > h2 {
+	margin-bottom: var(--space-4);
+}
+
 .section__lede {
 	max-width: var(--content-narrow);
 	font-size: 1.15rem;
 	color: var(--color-charcoal-soft);
+	text-align: justify;
+}
+
+.prose {
+	text-align: justify;
+	hyphens: auto;
 }
 
 .prose :where(p, ul, ol) {
@@ -633,7 +659,7 @@ select:focus-visible,
 
 .therapy-intro {
 	display: grid;
-	gap: var(--space-4);
+	gap: var(--space-5);
 	align-items: start;
 }
 
@@ -662,7 +688,7 @@ select:focus-visible,
 
 .about {
 	display: grid;
-	gap: var(--space-4);
+	gap: var(--space-5);
 	align-items: start;
 }
 
@@ -692,30 +718,33 @@ select:focus-visible,
 	background: linear-gradient(155deg, var(--color-sage-200), var(--color-cream-soft));
 }
 
-.about h4 {
-	margin-top: var(--space-3);
-}
-
-.tag-list {
-	list-style: none;
-	display: flex;
-	flex-wrap: wrap;
-	gap: 0.5rem;
-	margin-top: var(--space-3);
-}
-
-.tag-list li {
-	background-color: var(--color-sage-50);
-	border: 1px solid var(--color-sage-200);
-	color: var(--color-sage-900);
-	padding: 0.35em 0.9em;
-	border-radius: 999px;
-	font-size: 0.9rem;
-}
-
 /* ==========================================================================
    9. FAQ accordion
    ========================================================================== */
+
+.faq-heading {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-between;
+	gap: var(--space-2) var(--space-3);
+	margin-bottom: var(--space-4);
+}
+
+.faq-heading h2 {
+	margin: 0;
+}
+
+.faq-heading__logos {
+	display: flex;
+	align-items: center;
+	gap: var(--space-2);
+}
+
+.faq-heading__logos img {
+	height: 3rem;
+	width: auto;
+}
 
 .faq-list {
 	max-width: var(--content-narrow);
@@ -779,6 +808,8 @@ select:focus-visible,
 	padding-bottom: var(--space-3);
 	max-width: var(--content-narrow);
 	color: var(--color-charcoal-soft);
+	text-align: justify;
+	hyphens: auto;
 }
 
 .faq-item__panel[hidden] {
@@ -816,6 +847,85 @@ select:focus-visible,
 .contact__details dd {
 	margin: 0;
 	color: var(--color-charcoal-soft);
+}
+
+.contact__form-heading {
+	margin-top: var(--space-4);
+}
+
+.contact-form {
+	display: grid;
+	gap: var(--space-2);
+	max-width: var(--content-narrow);
+}
+
+.contact-form__row {
+	display: grid;
+	gap: var(--space-2);
+}
+
+@media (min-width: 40rem) {
+	.contact-form__row {
+		grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+	}
+}
+
+.contact-form__field {
+	display: grid;
+	gap: 0.35rem;
+	font-weight: 500;
+	color: var(--color-sage-900);
+}
+
+.contact-form__field input,
+.contact-form__field textarea {
+	width: 100%;
+	padding: 0.7em 0.9em;
+	font: inherit;
+	font-weight: 400;
+	color: var(--color-charcoal);
+	background-color: var(--color-white);
+	border: 1px solid var(--color-sage-200);
+	border-radius: var(--radius);
+}
+
+.contact-form__field textarea {
+	resize: vertical;
+}
+
+.contact-form__consent {
+	display: flex;
+	align-items: flex-start;
+	gap: 0.6rem;
+	font-size: 0.95rem;
+	color: var(--color-charcoal-soft);
+}
+
+.contact-form__consent input {
+	margin-top: 0.4em;
+}
+
+/* Honeypot: off-screen for people and skipped by screen readers and autofill. */
+.contact-form__hp {
+	position: absolute;
+	left: -10000px;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+}
+
+.form-notice {
+	margin-top: var(--space-3);
+	padding: var(--space-2) var(--space-3);
+	border: 1px solid var(--color-sage-200);
+	border-radius: var(--radius);
+	background-color: var(--color-sage-50);
+	color: var(--color-sage-900);
+}
+
+.form-notice--invalid,
+.form-notice--error {
+	border-color: var(--color-gold-dark);
 }
 
 .contact__map {
@@ -856,19 +966,6 @@ select:focus-visible,
 	.site-footer__grid {
 		grid-template-columns: 1.2fr 1fr 1fr;
 	}
-}
-
-.site-footer__logos {
-	display: flex;
-	align-items: center;
-	gap: var(--space-3);
-	margin-top: var(--space-2);
-}
-
-.site-footer__logos img {
-	max-height: 3rem;
-	width: auto;
-	filter: grayscale(1);
 }
 
 .site-footer__nav-list {

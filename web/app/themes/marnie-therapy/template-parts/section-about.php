@@ -1,17 +1,15 @@
 <?php
 /**
- * About Marnie section (ACF flexible content layout: about).
+ * About Me section (ACF flexible content layout: about).
  */
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-$heading   = get_sub_field( 'heading' ) ?: 'About Marnie';
-$name_line = get_sub_field( 'name_line' );
-$photo     = get_sub_field( 'photo' ); // attachment ID
-$content   = get_sub_field( 'content' );
-$areas     = get_sub_field( 'experience_areas' );
+$heading = get_sub_field( 'heading' ) ?: 'About Me';
+$photo   = get_sub_field( 'photo' ); // attachment ID
+$content = get_sub_field( 'content' );
 ?>
 <section class="section section--alt" id="about" aria-labelledby="about-heading">
 	<div class="container">
@@ -32,7 +30,7 @@ $areas     = get_sub_field( 'experience_areas' );
 						'about-lg',
 						false,
 						array(
-							'alt'      => $photo_alt ? $photo_alt : ( $name_line ? $name_line : 'Portrait of Marnie' ),
+							'alt'      => $photo_alt ? $photo_alt : 'Portrait of Marnie',
 							'sizes'    => '(min-width: 56rem) 20rem, 100vw',
 							'loading'  => 'lazy',
 							'decoding' => 'async',
@@ -47,23 +45,8 @@ $areas     = get_sub_field( 'experience_areas' );
 			</div>
 
 			<div>
-				<?php if ( $name_line ) : ?>
-					<h3><?php echo esc_html( $name_line ); ?></h3>
-				<?php endif; ?>
-
 				<?php if ( $content ) : ?>
 					<div class="prose"><?php echo wp_kses_post( $content ); ?></div>
-				<?php endif; ?>
-
-				<?php if ( $areas ) : ?>
-					<h4><?php esc_html_e( 'Areas of experience', 'marnie-therapy' ); ?></h4>
-					<ul class="tag-list">
-						<?php foreach ( $areas as $area ) : ?>
-							<?php if ( ! empty( $area['label'] ) ) : ?>
-								<li><?php echo esc_html( $area['label'] ); ?></li>
-							<?php endif; ?>
-						<?php endforeach; ?>
-					</ul>
 				<?php endif; ?>
 			</div>
 		</div>

@@ -9,8 +9,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 $contact_email = get_field( 'contact_email', 'option' ) ?: 'marnietherapy@gmail.com';
 $footer_note   = get_field( 'footer_note', 'option' );
-$ukcp_logo     = get_field( 'ukcp_logo', 'option' );
-$bcpc_logo     = get_field( 'bcpc_logo', 'option' );
 ?>
 	<footer class="site-footer" role="contentinfo">
 		<div class="container site-footer__grid">
@@ -20,23 +18,13 @@ $bcpc_logo     = get_field( 'bcpc_logo', 'option' );
 				<p>
 					<a href="mailto:<?php echo esc_attr( $contact_email ); ?>"><?php echo esc_html( $contact_email ); ?></a>
 				</p>
-				<?php if ( $ukcp_logo || $bcpc_logo ) : ?>
-					<div class="site-footer__logos">
-						<?php if ( $ukcp_logo ) : ?>
-							<img src="<?php echo esc_url( $ukcp_logo['sizes']['thumbnail'] ?? $ukcp_logo['url'] ); ?>" alt="<?php echo esc_attr( $ukcp_logo['alt'] ?: 'UKCP — UK Council for Psychotherapy member' ); ?>" width="120" height="48" loading="lazy" />
-						<?php endif; ?>
-						<?php if ( $bcpc_logo ) : ?>
-							<img src="<?php echo esc_url( $bcpc_logo['sizes']['thumbnail'] ?? $bcpc_logo['url'] ); ?>" alt="<?php echo esc_attr( $bcpc_logo['alt'] ?: 'Bath Centre for Counselling and Psychotherapy' ); ?>" width="120" height="48" loading="lazy" />
-						<?php endif; ?>
-					</div>
-				<?php endif; ?>
 			</div>
 
 			<div>
 				<h2 class="visually-hidden"><?php esc_html_e( 'Site navigation', 'marnie-therapy' ); ?></h2>
 				<ul class="site-footer__nav-list">
 					<li><a href="#therapy"><?php esc_html_e( 'Therapy', 'marnie-therapy' ); ?></a></li>
-					<li><a href="#about"><?php esc_html_e( 'About Marnie', 'marnie-therapy' ); ?></a></li>
+					<li><a href="#about"><?php esc_html_e( 'About Me', 'marnie-therapy' ); ?></a></li>
 					<li><a href="#faq"><?php esc_html_e( 'FAQs', 'marnie-therapy' ); ?></a></li>
 					<li><a href="#contact"><?php esc_html_e( 'Contact', 'marnie-therapy' ); ?></a></li>
 				</ul>

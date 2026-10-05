@@ -12,12 +12,27 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-$heading = get_sub_field( 'heading' ) ?: 'Frequently Asked Questions';
-$items   = get_sub_field( 'items' );
+$heading    = get_sub_field( 'heading' ) ?: 'Frequently Asked Questions';
+$items      = get_sub_field( 'items' );
+$ukcp_logo  = get_field( 'ukcp_logo', 'option' );
+$bcpc_logo  = get_field( 'bcpc_logo', 'option' );
 ?>
 <section class="section" id="faq" aria-labelledby="faq-heading">
 	<div class="container">
-		<h2 id="faq-heading"><?php echo esc_html( $heading ); ?></h2>
+		<div class="faq-heading">
+			<h2 id="faq-heading"><?php echo esc_html( $heading ); ?></h2>
+
+			<?php if ( $ukcp_logo || $bcpc_logo ) : ?>
+				<div class="faq-heading__logos">
+					<?php if ( $ukcp_logo ) : ?>
+						<img src="<?php echo esc_url( $ukcp_logo['sizes']['thumbnail'] ?? $ukcp_logo['url'] ); ?>" alt="<?php echo esc_attr( $ukcp_logo['alt'] ?: 'UKCP — UK Council for Psychotherapy member' ); ?>" width="120" height="48" loading="lazy" />
+					<?php endif; ?>
+					<?php if ( $bcpc_logo ) : ?>
+						<img src="<?php echo esc_url( $bcpc_logo['sizes']['thumbnail'] ?? $bcpc_logo['url'] ); ?>" alt="<?php echo esc_attr( $bcpc_logo['alt'] ?: 'Bath Centre for Counselling and Psychotherapy' ); ?>" width="120" height="48" loading="lazy" />
+					<?php endif; ?>
+				</div>
+			<?php endif; ?>
+		</div>
 
 		<?php if ( $items ) : ?>
 			<div class="faq-list" data-faq-list>

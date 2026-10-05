@@ -58,6 +58,72 @@ if ( ! $map_embed ) {
 						<?php esc_html_e( 'Email Marnie to book a first session', 'marnie-therapy' ); ?>
 					</a>
 				</p>
+
+				<?php
+				$contact_status = isset( $_GET['contact'] ) ? sanitize_key( wp_unslash( $_GET['contact'] ) ) : '';
+				$status_notices = array(
+					'sent'    => __( 'Thank you. Your message has been sent and I will be in touch soon.', 'marnie-therapy' ),
+					'invalid' => __( 'Please add your name, a valid email address and a message, and tick the box to agree to be contacted.', 'marnie-therapy' ),
+					'error'   => sprintf(
+						/* translators: %s: email address. */
+						__( 'Sorry, your message could not be sent. Please email %s directly.', 'marnie-therapy' ),
+						$email
+					),
+				);
+				?>
+
+				<?php if ( isset( $status_notices[ $contact_status ] ) ) : ?>
+					<p class="form-notice form-notice--<?php echo esc_attr( $contact_status ); ?>" role="status">
+						<?php echo esc_html( $status_notices[ $contact_status ] ); ?>
+					</p>
+				<?php endif; ?>
+
+				<?php if ( 'sent' !== $contact_status ) : ?>
+					<h3 class="contact__form-heading"><?php esc_html_e( 'Send an enquiry', 'marnie-therapy' ); ?></h3>
+
+					<form class="contact-form" method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>">
+						<input type="hidden" name="action" value="<?php echo esc_attr( MARNIE_CONTACT_ACTION ); ?>" />
+						<?php wp_nonce_field( MARNIE_CONTACT_ACTION, 'marnie_contact_nonce' ); ?>
+
+						<p class="contact-form__hp" aria-hidden="true">
+							<label>
+								<?php esc_html_e( 'Leave this field empty', 'marnie-therapy' ); ?>
+								<input type="text" name="marnie_website" tabindex="-1" autocomplete="off" />
+							</label>
+						</p>
+
+						<div class="contact-form__row">
+							<label class="contact-form__field">
+								<span><?php esc_html_e( 'Name', 'marnie-therapy' ); ?> <abbr title="<?php esc_attr_e( 'required', 'marnie-therapy' ); ?>">*</abbr></span>
+								<input type="text" name="name" autocomplete="name" required />
+							</label>
+
+							<label class="contact-form__field">
+								<span><?php esc_html_e( 'Email', 'marnie-therapy' ); ?> <abbr title="<?php esc_attr_e( 'required', 'marnie-therapy' ); ?>">*</abbr></span>
+								<input type="email" name="email" autocomplete="email" required />
+							</label>
+						</div>
+
+						<label class="contact-form__field">
+							<span><?php esc_html_e( 'Phone (optional)', 'marnie-therapy' ); ?></span>
+							<input type="tel" name="phone" autocomplete="tel" />
+						</label>
+
+						<label class="contact-form__field">
+							<span><?php esc_html_e( 'Message', 'marnie-therapy' ); ?> <abbr title="<?php esc_attr_e( 'required', 'marnie-therapy' ); ?>">*</abbr></span>
+							<textarea name="message" rows="6" required></textarea>
+						</label>
+
+						<label class="contact-form__consent">
+							<input type="checkbox" name="consent" value="1" required />
+							<span><?php esc_html_e( 'I agree for the details I have given to be used to reply to this enquiry.', 'marnie-therapy' ); ?></span>
+						</label>
+
+						<p>
+							<button type="submit" class="btn btn--primary"><?php esc_html_e( 'Send message', 'marnie-therapy' ); ?></button>
+						</p>
+					</form>
+				<?php endif; ?>
 			</div>
 
 			<?php if ( $show_map ) : ?>
