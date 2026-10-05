@@ -49,6 +49,8 @@ Text Domain: marnie-therapy
 
 	/* Rendered height of the sticky .site-header (padding-block + logo + border). */
 	--header-height: 7.4rem;
+	/* Single-row header on phones and tablets. */
+	--header-height-mobile: 4.9rem;
 
 	--radius: 0.75rem;
 	--shadow-soft: 0 1.5rem 3rem rgba(44, 56, 40, 0.12);
@@ -648,6 +650,15 @@ select:focus-visible,
 /* Phones: left-aligned text, and less vertical padding so the heading,
    quote and buttons all sit above the fold. */
 @media (max-width: 40rem) {
+	/* Fill the screen below the header, with the text centred vertically. */
+	.hero {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		min-height: calc(100vh - var(--header-height-mobile));
+		min-height: calc(100svh - var(--header-height-mobile));
+	}
+
 	.hero__btn-full {
 		display: none;
 	}
@@ -702,7 +713,7 @@ select:focus-visible,
 	   --header-height reflects (that's tuned for the taller desktop
 	   header), so recalculate against the real height, with a smaller gap. */
 	.section {
-		scroll-margin-top: calc(4.9rem + 1.25rem - var(--space-6));
+		scroll-margin-top: calc(var(--header-height-mobile) + 1.25rem - var(--space-6));
 	}
 }
 
