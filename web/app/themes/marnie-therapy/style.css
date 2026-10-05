@@ -52,6 +52,11 @@ Text Domain: marnie-therapy
 	/* Single-row header on phones and tablets. */
 	--header-height-mobile: 4.9rem;
 
+	/* Header logo and mark sizes, the same at every screen width. */
+	--header-logo-size: 2.5rem;
+	--header-mark-size: 1.75rem;
+	--header-name-size: 1rem;
+
 	--radius: 0.75rem;
 	--shadow-soft: 0 1.5rem 3rem rgba(44, 56, 40, 0.12);
 }
@@ -317,7 +322,7 @@ select:focus-visible,
 }
 
 .custom-logo {
-	height: 5.4rem;
+	height: var(--header-logo-size);
 	width: auto;
 	max-width: 100%;
 }
@@ -344,7 +349,7 @@ select:focus-visible,
 }
 
 .site-branding__mobile-logo img {
-	height: 5.4rem;
+	height: var(--header-logo-size);
 	width: auto;
 	max-width: 100%;
 }
@@ -443,28 +448,8 @@ select:focus-visible,
 }
 
 @media (max-width: 54rem) {
-	/* Header sizes: phones first, then larger tablets from 40rem. */
-	:root {
-		--header-logo-size: 2.5rem;
-		--header-mark-size: 1.75rem;
-		--header-name-size: 1rem;
-	}
-
-	@media (min-width: 40rem) {
-		:root {
-			--header-logo-size: 2.8rem;
-			--header-mark-size: 1.9rem;
-			--header-name-size: 1.1rem;
-		}
-	}
-
 	.nav-toggle {
 		display: inline-flex;
-	}
-
-	.custom-logo,
-	.site-branding__mobile-logo img {
-		height: var(--header-logo-size);
 	}
 
 	.custom-logo {
