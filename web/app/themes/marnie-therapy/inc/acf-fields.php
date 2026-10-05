@@ -481,7 +481,7 @@ function marnie_register_site_settings_fields() {
 					'type'          => 'image',
 					'return_format' => 'array',
 					'preview_size'  => 'thumbnail',
-					'instructions'  => 'Optional compact logo shown in the header on small screens instead of the main site logo (Customizer). Best as a square or wide-but-short mark — leave empty to keep using the main logo on mobile.',
+					'instructions'  => 'Optional logo shown in the header on all screen sizes instead of the main site logo (Customizer). Best as a square or wide-but-short mark — leave empty to keep using the main logo.',
 				),
 				array(
 					'key'           => 'field_mt_settings_ukcp_logo',

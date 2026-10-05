@@ -329,12 +329,22 @@ select:focus-visible,
 	letter-spacing: 0.02em;
 }
 
+/* When a header logo is uploaded in Site Settings, it replaces the main logo at every screen size. */
 .site-branding__mobile-logo {
 	display: none;
 }
 
+.site-branding.has-mobile-logo .site-branding__desktop-logo {
+	display: none;
+}
+
+.site-branding.has-mobile-logo .site-branding__mobile-logo {
+	display: flex;
+	min-width: 0;
+}
+
 .site-branding__mobile-logo img {
-	height: 2.8rem;
+	height: 5.4rem;
 	width: auto;
 	max-width: 100%;
 }
@@ -471,15 +481,6 @@ select:focus-visible,
 		overflow: hidden;
 		text-overflow: ellipsis;
 		white-space: nowrap;
-	}
-
-	.site-branding.has-mobile-logo .site-branding__desktop-logo {
-		display: none;
-	}
-
-	.site-branding.has-mobile-logo .site-branding__mobile-logo {
-		display: flex;
-		min-width: 0;
 	}
 
 	.site-header__inner {
