@@ -46,6 +46,7 @@ Text Domain: marnie-therapy
 	--space-4: 2.5rem;
 	--space-5: 4rem;
 	--space-6: 6rem;
+	--section-padding: 4.5rem;
 
 	/* Rendered height of the sticky .site-header (padding-block + logo + border). */
 	--header-height: 7.4rem;
@@ -687,11 +688,11 @@ select:focus-visible,
    ========================================================================== */
 
 .section {
-	padding-block: var(--space-6);
+	padding-block: var(--section-padding);
 	/* Anchor targets sit on the section itself, ahead of its own top
 	   padding, so this nets out to ~2.5rem of clear space below the
 	   sticky header once scrolled to. */
-	scroll-margin-top: calc(var(--header-height) + 2.5rem - var(--space-6));
+	scroll-margin-top: calc(var(--header-height) + 2.5rem - var(--section-padding));
 }
 
 @media (max-width: 54rem) {
@@ -699,7 +700,7 @@ select:focus-visible,
 	   --header-height reflects (that's tuned for the taller desktop
 	   header), so recalculate against the real height, with a smaller gap. */
 	.section {
-		scroll-margin-top: calc(var(--header-height-mobile) + 1.25rem - var(--space-6));
+		scroll-margin-top: calc(var(--header-height-mobile) + 1.25rem - var(--section-padding));
 	}
 }
 
@@ -785,6 +786,13 @@ select:focus-visible,
 	overflow: hidden;
 	box-shadow: var(--shadow-soft);
 	aspect-ratio: 4 / 5;
+	width: 10rem; /* thumbnail on mobile */
+}
+
+@media (min-width: 56rem) {
+	.about__photo {
+		width: auto;
+	}
 }
 
 .about__photo img {

@@ -19,7 +19,7 @@ $content = get_sub_field( 'content' );
 			<div class="about__photo<?php echo $photo ? '' : ' about__photo--placeholder'; ?>">
 				<?php if ( $photo ) : ?>
 					<?php
-					// Fixed ~20rem column on desktop, full-width card on mobile
+					// Fixed ~20rem column on desktop, 10rem thumbnail on mobile
 					// (matches the .about grid breakpoint in style.css) — the
 					// sizes attribute tells the browser exactly how large this
 					// will actually render, so it picks the smallest sufficient
@@ -31,7 +31,7 @@ $content = get_sub_field( 'content' );
 						false,
 						array(
 							'alt'      => $photo_alt ? $photo_alt : 'Portrait of Marnie',
-							'sizes'    => '(min-width: 56rem) 20rem, 100vw',
+							'sizes'    => '(min-width: 56rem) 20rem, 10rem',
 							'loading'  => 'lazy',
 							'decoding' => 'async',
 						)
