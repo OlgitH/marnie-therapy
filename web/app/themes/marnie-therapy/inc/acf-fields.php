@@ -70,10 +70,12 @@ function marnie_register_home_sections_fields() {
 							'display'    => 'block',
 							'sub_fields' => array(
 								array(
-									'key'   => 'field_mt_hero_heading',
-									'label' => 'Heading',
-									'name'  => 'heading',
-									'type'  => 'text',
+									'key'           => 'field_mt_hero_heading',
+									'label'         => 'Heading',
+									'name'          => 'heading',
+									'type'          => 'textarea',
+									'rows'          => 2,
+									'instructions'  => 'Press Enter where the second line should start on phones (e.g. Relational Psychotherapist, then a new line: in Bath). On larger screens it shows on one line.',
 									'default_value' => 'Marnie Therapy',
 								),
 								array(
@@ -119,6 +121,20 @@ function marnie_register_home_sections_fields() {
 									'name'  => 'cta_text',
 									'type'  => 'text',
 									'default_value' => 'Get in touch',
+								),
+								array(
+									'key'           => 'field_mt_hero_secondary_cta_text',
+									'label'         => 'Second Button Text',
+									'name'          => 'secondary_cta_text',
+									'type'          => 'text',
+									'default_value' => 'Learn about therapy with me',
+								),
+								array(
+									'key'          => 'field_mt_hero_secondary_cta_mobile_text',
+									'label'        => 'Second Button Text (Phones)',
+									'name'         => 'secondary_cta_mobile_text',
+									'type'         => 'text',
+									'instructions' => 'Shorter text shown on phones, e.g. My therapy. Leave empty to use the text above.',
 								),
 							),
 						),

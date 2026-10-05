@@ -577,6 +577,18 @@ select:focus-visible,
 	color: var(--color-white);
 }
 
+/* Desktop: heading on one line (the line break from the ACF heading is hidden). */
+@media (min-width: 64rem) {
+	.hero h1 {
+		font-size: 2.8rem;
+		white-space: nowrap;
+	}
+
+	.hero h1 br {
+		display: none;
+	}
+}
+
 .hero__subheading {
 	font-size: 1.2rem;
 	max-width: 38rem;
@@ -629,9 +641,21 @@ select:focus-visible,
 	flex-wrap: wrap;
 }
 
+.hero__btn-short {
+	display: none;
+}
+
 /* Phones: left-aligned text, and less vertical padding so the heading,
    quote and buttons all sit above the fold. */
 @media (max-width: 40rem) {
+	.hero__btn-full {
+		display: none;
+	}
+
+	.hero__btn-short {
+		display: inline;
+	}
+
 	.hero__content {
 		text-align: left;
 		padding-block: var(--space-3);

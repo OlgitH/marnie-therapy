@@ -14,6 +14,8 @@ $quote_text   = get_sub_field( 'quote_text' );
 $quote_author = get_sub_field( 'quote_author' );
 $background   = get_sub_field( 'background_image' ); // attachment ID
 $cta_text     = get_sub_field( 'cta_text' ) ?: __( 'Get in touch', 'marnie-therapy' );
+$second_cta   = get_sub_field( 'secondary_cta_text' ) ?: __( 'Learn about therapy with me', 'marnie-therapy' );
+$second_short = get_sub_field( 'secondary_cta_mobile_text' ) ?: $second_cta;
 ?>
 <section class="hero" aria-labelledby="hero-heading">
 	<div class="hero__media<?php echo $background ? '' : ' hero__media--placeholder'; ?>" aria-hidden="true">
@@ -39,7 +41,7 @@ $cta_text     = get_sub_field( 'cta_text' ) ?: __( 'Get in touch', 'marnie-thera
 	</div>
 
 	<div class="container hero__content">
-		<h1 id="hero-heading"><?php echo esc_html( $heading ); ?></h1>
+		<h1 id="hero-heading"><?php echo nl2br( esc_html( $heading ) ); ?></h1>
 
 		<?php if ( $name_line ) : ?>
 			<p class="hero__name"><?php echo esc_html( $name_line ); ?></p>
@@ -60,7 +62,10 @@ $cta_text     = get_sub_field( 'cta_text' ) ?: __( 'Get in touch', 'marnie-thera
 
 		<div class="hero__actions">
 			<a class="btn btn--primary" href="#contact"><?php echo esc_html( $cta_text ); ?></a>
-			<a class="btn btn--outline" href="#therapy"><?php esc_html_e( 'Learn about therapy with me', 'marnie-therapy' ); ?></a>
+			<a class="btn btn--outline" href="#therapy">
+				<span class="hero__btn-full"><?php echo esc_html( $second_cta ); ?></span>
+				<span class="hero__btn-short"><?php echo esc_html( $second_short ); ?></span>
+			</a>
 		</div>
 	</div>
 </section>
