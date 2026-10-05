@@ -109,11 +109,31 @@ h4 {
 }
 
 h1 {
-	font-size: clamp(2.25rem, 4vw + 1rem, 3.5rem);
+	font-size: 2.25rem;
 }
 
 h2 {
-	font-size: clamp(1.75rem, 2.5vw + 1rem, 2.5rem);
+	font-size: 1.75rem;
+}
+
+@media (min-width: 40rem) {
+	h1 {
+		font-size: 2.75rem;
+	}
+
+	h2 {
+		font-size: 2rem;
+	}
+}
+
+@media (min-width: 64rem) {
+	h1 {
+		font-size: 3.5rem;
+	}
+
+	h2 {
+		font-size: 2.5rem;
+	}
 }
 
 h3 {
@@ -411,22 +431,41 @@ select:focus-visible,
 }
 
 @media (max-width: 54rem) {
+	/* Header sizes: phones first, then larger tablets from 40rem. */
+	:root {
+		--header-logo-size: 2.5rem;
+		--header-mark-size: 1.75rem;
+		--header-name-size: 1rem;
+	}
+
+	@media (min-width: 40rem) {
+		:root {
+			--header-logo-size: 2.8rem;
+			--header-mark-size: 1.9rem;
+			--header-name-size: 1.1rem;
+		}
+	}
+
 	.nav-toggle {
 		display: inline-flex;
 	}
 
+	.custom-logo,
+	.site-branding__mobile-logo img {
+		height: var(--header-logo-size);
+	}
+
 	.custom-logo {
-		height: clamp(1.6rem, 11.5vw, 2.8rem);
 		flex-shrink: 1;
 	}
 
 	.site-branding__mark {
-		width: clamp(1.1rem, 7.8vw, 1.9rem);
-		height: clamp(1.1rem, 7.8vw, 1.9rem);
+		width: var(--header-mark-size);
+		height: var(--header-mark-size);
 	}
 
 	.site-branding__name {
-		font-size: clamp(0.75rem, 4.5vw, 1.1rem);
+		font-size: var(--header-name-size);
 		overflow: hidden;
 		text-overflow: ellipsis;
 		white-space: nowrap;
@@ -439,10 +478,6 @@ select:focus-visible,
 	.site-branding.has-mobile-logo .site-branding__mobile-logo {
 		display: flex;
 		min-width: 0;
-	}
-
-	.site-branding__mobile-logo img {
-		height: clamp(1.6rem, 11.5vw, 2.8rem);
 	}
 
 	.site-header__inner {
@@ -594,6 +629,38 @@ select:focus-visible,
 	flex-wrap: wrap;
 }
 
+/* Phones: left-aligned text, and less vertical padding so the heading,
+   quote and buttons all sit above the fold. */
+@media (max-width: 40rem) {
+	.hero__content {
+		text-align: left;
+		padding-block: var(--space-3);
+	}
+
+	.hero__name {
+		font-size: 1.25rem;
+	}
+
+	.hero__subheading {
+		margin-inline: 0;
+		font-size: 1.0625rem;
+	}
+
+	.hero__quote {
+		margin: var(--space-3) 0 0;
+		font-size: 1.125rem;
+	}
+
+	.hero__quote cite {
+		font-size: 0.9rem;
+	}
+
+	.hero__actions {
+		margin-top: var(--space-3);
+		justify-content: flex-start;
+	}
+}
+
 /* ==========================================================================
    6. Generic section rhythm
    ========================================================================== */
@@ -637,12 +704,6 @@ select:focus-visible,
 	max-width: var(--content-narrow);
 	font-size: 1.15rem;
 	color: var(--color-charcoal-soft);
-	text-align: justify;
-}
-
-.prose {
-	text-align: justify;
-	hyphens: auto;
 }
 
 .prose :where(p, ul, ol) {
@@ -808,8 +869,6 @@ select:focus-visible,
 	padding-bottom: var(--space-3);
 	max-width: var(--content-narrow);
 	color: var(--color-charcoal-soft);
-	text-align: justify;
-	hyphens: auto;
 }
 
 .faq-item__panel[hidden] {
