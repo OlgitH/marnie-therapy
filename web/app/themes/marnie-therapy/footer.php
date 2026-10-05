@@ -9,7 +9,29 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 $contact_email = get_field( 'contact_email', 'option' ) ?: 'marnietherapy@gmail.com';
 $footer_note   = get_field( 'footer_note', 'option' );
+
+$quote_text = get_field( 'closing_quote_text', 'option' );
+if ( false === $quote_text || null === $quote_text ) {
+	$quote_text = 'I am not what happened to me, I am what I choose to become.';
+}
+$quote_author = get_field( 'closing_quote_author', 'option' );
+if ( false === $quote_author || null === $quote_author ) {
+	$quote_author = 'Carl Jung';
+}
 ?>
+	<?php if ( is_front_page() && $quote_text ) : ?>
+		<section class="quote-band" aria-label="<?php esc_attr_e( 'Quote', 'marnie-therapy' ); ?>">
+			<div class="container">
+				<blockquote class="quote-band__quote">
+					<p>&ldquo;<?php echo esc_html( $quote_text ); ?>&rdquo;</p>
+					<?php if ( $quote_author ) : ?>
+						<cite>&mdash; <?php echo esc_html( $quote_author ); ?></cite>
+					<?php endif; ?>
+				</blockquote>
+			</div>
+		</section>
+	<?php endif; ?>
+
 	<footer class="site-footer" role="contentinfo">
 		<div class="container site-footer__grid">
 			<div>

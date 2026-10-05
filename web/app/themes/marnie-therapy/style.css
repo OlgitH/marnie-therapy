@@ -777,6 +777,12 @@ select:focus-visible,
 	align-items: start;
 }
 
+@media (max-width: 55.99rem) {
+	.about {
+		gap: var(--space-3); /* tighter gap under the thumbnail */
+	}
+}
+
 @media (min-width: 56rem) {
 	.about {
 		grid-template-columns: minmax(0, 20rem) minmax(0, 1fr);
@@ -1031,6 +1037,35 @@ select:focus-visible,
 	height: 100%;
 	min-height: 16rem;
 	border: 0;
+}
+
+/* Closing quote band, just above the footer. */
+.quote-band {
+	padding-block: var(--section-padding);
+	background-color: var(--color-cream);
+	text-align: center;
+}
+
+.quote-band__quote {
+	margin: 0 auto;
+	max-width: 46rem;
+	border: none;
+	padding: 0;
+	font-family: var(--font-heading);
+	font-style: italic;
+	font-size: 1.5rem;
+}
+
+.quote-band__quote p {
+	margin: 0;
+}
+
+.quote-band__quote cite {
+	display: block;
+	margin-top: var(--space-2);
+	font-style: normal;
+	font-size: 1rem;
+	opacity: 0.85;
 }
 
 /* ==========================================================================
