@@ -20,7 +20,7 @@ $map_embed    = get_field( 'map_embed_url', 'option' );
 if ( ! $map_embed ) {
 	// Google's key-less embed endpoint: no WebGL dependency (unlike OSM's
 	// current MapLibre embed), so it degrades gracefully on older browsers.
-	$map_embed = 'https://www.google.com/maps?q=' . rawurlencode( 'Bath Abbey, Bath BA2 4DU' ) . '&output=embed';
+	$map_embed = 'https://www.google.com/maps?q=' . rawurlencode( 'BA2 4DU, United Kingdom' ) . '&output=embed';
 }
 ?>
 <section class="section section--alt" id="contact" aria-labelledby="contact-heading">

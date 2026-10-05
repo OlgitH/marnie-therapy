@@ -689,18 +689,17 @@ select:focus-visible,
 
 .section {
 	padding-block: var(--section-padding);
-	/* Anchor targets sit on the section itself, ahead of its own top
-	   padding, so this nets out to ~2.5rem of clear space below the
-	   sticky header once scrolled to. */
-	scroll-margin-top: calc(var(--header-height) + 2.5rem - var(--section-padding));
+	/* Anchor targets land with the section's top edge flush against the
+	   bottom of the sticky header, so none of the previous section shows.
+	   --header-offset is the measured header height (set in main.js); the
+	   fallbacks are the estimates above. The 1px tucks under the header's
+	   border to avoid a hairline seam. */
+	scroll-margin-top: calc(var(--header-offset, var(--header-height)) - 1px);
 }
 
 @media (max-width: 54rem) {
-	/* The sticky header is much shorter here (single row) than
-	   --header-height reflects (that's tuned for the taller desktop
-	   header), so recalculate against the real height, with a smaller gap. */
 	.section {
-		scroll-margin-top: calc(var(--header-height-mobile) + 1.25rem - var(--section-padding));
+		scroll-margin-top: calc(var(--header-offset, var(--header-height-mobile)) - 1px);
 	}
 }
 
@@ -757,6 +756,8 @@ select:focus-visible,
 	overflow: hidden;
 	box-shadow: var(--shadow-soft);
 	aspect-ratio: 4 / 5;
+	width: 100%;
+	max-width: 22rem; /* don't balloon between phone and desktop widths */
 }
 
 .therapy-intro__image img {
@@ -1027,7 +1028,7 @@ select:focus-visible,
 	display: block;
 	width: 100%;
 	height: 100%;
-	min-height: 20rem;
+	min-height: 16rem;
 	border: 0;
 }
 

@@ -1,6 +1,26 @@
 (function () {
 	'use strict';
 
+	// Keep --header-offset in sync with the real sticky header height so
+	// anchor scrolling lands flush against it at every width.
+	var siteHeader = document.querySelector('.site-header');
+
+	if (siteHeader) {
+		var syncHeaderOffset = function () {
+			document.documentElement.style.setProperty(
+				'--header-offset',
+				siteHeader.getBoundingClientRect().height + 'px'
+			);
+		};
+
+		syncHeaderOffset();
+		window.addEventListener('resize', syncHeaderOffset);
+
+		if (window.ResizeObserver) {
+			new ResizeObserver(syncHeaderOffset).observe(siteHeader);
+		}
+	}
+
 	// Mobile navigation toggle.
 	var toggle = document.querySelector('.nav-toggle');
 	var nav = document.getElementById('primary-navigation');
