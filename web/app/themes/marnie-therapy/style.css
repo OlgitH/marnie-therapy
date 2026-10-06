@@ -741,7 +741,7 @@ select:focus-visible,
 
 /* Space between a section heading and the content beneath it. */
 .section .container > h2 {
-	margin-bottom: var(--space-4);
+	margin-bottom: 1.825rem;
 }
 
 .section__lede {
