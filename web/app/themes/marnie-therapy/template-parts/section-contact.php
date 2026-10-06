@@ -132,6 +132,16 @@ if ( ! $map_embed ) {
 
 			<?php if ( $show_map || $ukcp_logo || $bcpc_logo ) : ?>
 				<div class="contact__aside">
+					<?php if ( $show_map ) : ?>
+						<div class="contact__map">
+							<iframe
+								src="<?php echo esc_url( $map_embed ); ?>"
+								title="<?php esc_attr_e( 'Map showing the location of Marnie Therapy in Bath', 'marnie-therapy' ); ?>"
+								loading="lazy"
+							></iframe>
+						</div>
+					<?php endif; ?>
+
 					<?php if ( $ukcp_logo || $bcpc_logo ) : ?>
 						<div class="contact__logos">
 							<?php if ( $ukcp_logo ) : ?>
@@ -140,16 +150,6 @@ if ( ! $map_embed ) {
 							<?php if ( $bcpc_logo ) : ?>
 								<img src="<?php echo esc_url( $bcpc_logo['sizes']['medium'] ?? $bcpc_logo['url'] ); ?>" alt="<?php echo esc_attr( $bcpc_logo['alt'] ?: 'Bath Centre for Counselling and Psychotherapy' ); ?>" width="120" height="48" loading="lazy" />
 							<?php endif; ?>
-						</div>
-					<?php endif; ?>
-
-					<?php if ( $show_map ) : ?>
-						<div class="contact__map">
-							<iframe
-								src="<?php echo esc_url( $map_embed ); ?>"
-								title="<?php esc_attr_e( 'Map showing the location of Marnie Therapy in Bath', 'marnie-therapy' ); ?>"
-								loading="lazy"
-							></iframe>
 						</div>
 					<?php endif; ?>
 				</div>

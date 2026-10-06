@@ -1056,7 +1056,7 @@ select:focus-visible,
 }
 
 .contact__logos img {
-	height: 3.75rem;
+	height: 3.25rem;
 	width: auto;
 	max-width: none;
 	object-fit: contain;
