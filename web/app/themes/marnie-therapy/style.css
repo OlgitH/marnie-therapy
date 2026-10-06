@@ -557,7 +557,7 @@ select:focus-visible,
 .hero__content {
 	position: relative;
 	z-index: 1;
-	padding-block: var(--space-6) var(--space-5);
+	padding-block: 3rem; /* same as .section */
 	text-align: center;
 	max-width: 46rem;
 	margin-inline: auto;
@@ -671,7 +671,7 @@ select:focus-visible,
 
 	.hero__content {
 		text-align: left;
-		padding-block: var(--space-3);
+		padding-block: 1.8rem; /* same as .section on phones */
 	}
 
 	.hero__subheading {
@@ -699,19 +699,30 @@ select:focus-visible,
    ========================================================================== */
 
 .section {
-	padding-block: var(--section-padding);
-	/* Anchor targets sit on the section itself, ahead of its own top
-	   padding, so subtracting the padding leaves the heading ~1rem below
-	   the sticky header (the section's top edge tucks behind the header,
-	   so nothing of the previous section shows). --header-offset is the
-	   measured header height (set in main.js); the fallbacks are the
-	   estimates above. */
-	scroll-margin-top: calc(var(--header-offset, var(--header-height)) + 1rem - var(--section-padding));
+	padding-block: 3rem;
+	/* Anchor targets sit on the section itself. The scroll margin is exactly
+	   the sticky header's height, so the header's bottom edge meets the
+	   section's top edge (the header only ever covers the section above).
+	   --header-offset is the measured header height (set in main.js); the
+	   fallbacks are the estimates above. */
+	scroll-margin-top: var(--header-offset, var(--header-height));
 }
 
 @media (max-width: 54rem) {
 	.section {
-		scroll-margin-top: calc(var(--header-offset, var(--header-height-mobile)) + 1rem - var(--section-padding));
+		scroll-margin-top: var(--header-offset, var(--header-height-mobile));
+	}
+}
+
+/* Phones: tighter vertical padding. */
+@media (max-width: 40rem) {
+	.section {
+		padding-block: 1.8rem;
+	}
+
+	/* Trailing margins would make the bottom padding bigger than the top. */
+	.section .container :last-child {
+		margin-bottom: 0;
 	}
 }
 
@@ -755,6 +766,12 @@ select:focus-visible,
 	display: grid;
 	gap: var(--space-5);
 	align-items: start;
+}
+
+@media (max-width: 55.99rem) {
+	.therapy-intro {
+		gap: var(--space-3); /* tighter gap between the text and the image when stacked */
+	}
 }
 
 @media (min-width: 56rem) {

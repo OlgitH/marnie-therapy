@@ -32,7 +32,7 @@ $content = get_sub_field( 'content' );
 						array(
 							'alt'      => $photo_alt ? $photo_alt : 'Portrait of Marnie',
 							'sizes'    => '(min-width: 56rem) 20rem, 10rem',
-							'loading'  => 'lazy',
+							'loading'  => 'eager',
 							'decoding' => 'async',
 						)
 					);

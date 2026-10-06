@@ -39,7 +39,7 @@ $image   = get_sub_field( 'image' ); // attachment ID
 						array(
 							'alt'      => $image_alt ? $image_alt : '',
 							'sizes'    => '(min-width: 56rem) 22rem, min(100vw, 22rem)',
-							'loading'  => 'lazy',
+							'loading'  => 'eager',
 							'decoding' => 'async',
 						)
 					);

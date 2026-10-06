@@ -38,13 +38,13 @@ add_action(
 			null
 		);
 
-		wp_enqueue_style( 'marnie-therapy-style', get_stylesheet_uri(), array( 'marnie-therapy-fonts' ), MARNIE_THEME_VERSION );
+		wp_enqueue_style( 'marnie-therapy-style', get_stylesheet_uri(), array( 'marnie-therapy-fonts' ), (string) filemtime( get_stylesheet_directory() . '/style.css' ) );
 
 		wp_enqueue_script(
 			'marnie-therapy-main',
 			get_theme_file_uri( 'assets/js/main.js' ),
 			array(),
-			MARNIE_THEME_VERSION,
+			(string) filemtime( get_theme_file_path( 'assets/js/main.js' ) ),
 			true
 		);
 	}
