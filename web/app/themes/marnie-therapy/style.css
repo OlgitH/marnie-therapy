@@ -850,6 +850,7 @@ select:focus-visible,
 	display: grid;
 	grid-template-columns: repeat(2, minmax(0, 1fr)); /* side by side on tablets and below */
 	gap: var(--space-3);
+	align-items: start; /* each photo keeps its natural height */
 	max-width: 30rem;
 }
 
