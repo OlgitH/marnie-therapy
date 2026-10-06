@@ -69,7 +69,7 @@ $photos     = array_filter( array( get_sub_field( 'photo_1' ), get_sub_field( 'p
 							'large',
 							false,
 							array(
-								'sizes'    => '(min-width: 56rem) 24rem, 100vw',
+								'sizes'    => '(min-width: 56rem) 18rem, 50vw',
 								'loading'  => 'lazy',
 								'decoding' => 'async',
 							)

@@ -841,14 +841,24 @@ select:focus-visible,
 
 @media (min-width: 56rem) {
 	.faq--has-photos {
-		grid-template-columns: minmax(0, 1fr) minmax(0, 24rem);
+		grid-template-columns: minmax(0, 1fr) minmax(0, 18rem);
 		align-items: start;
 	}
 }
 
 .faq__photos {
 	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr)); /* side by side on tablets and below */
 	gap: var(--space-3);
+	max-width: 30rem;
+}
+
+@media (min-width: 56rem) {
+	.faq__photos {
+		grid-template-columns: minmax(0, 1fr); /* stacked beside the questions */
+		max-width: 18rem;
+		justify-self: end;
+	}
 }
 
 .faq__photo {
