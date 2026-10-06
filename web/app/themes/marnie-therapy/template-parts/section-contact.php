@@ -12,9 +12,7 @@ $intro    = get_sub_field( 'intro' );
 $show_map = get_sub_field( 'show_map' );
 
 $email        = get_field( 'contact_email', 'option' ) ?: 'marnietherapy@gmail.com';
-$price        = get_field( 'session_price', 'option' ) ?: '£40';
-$price_suffix = get_field( 'session_price_suffix', 'option' );
-$price_suffix = ( false === $price_suffix || null === $price_suffix ) ? 'per session' : $price_suffix;
+$price        = get_field( 'session_price', 'option' ) ?: '£40 per session';
 $concessions  = get_field( 'concessions_note', 'option' );
 $address      = get_field( 'practice_address', 'option' ) ?: "Bathwick\nBath, BA2 4DU";
 $map_embed    = get_field( 'map_embed_url', 'option' );
@@ -45,7 +43,7 @@ if ( ! $map_embed ) {
 					<div>
 						<dt><?php esc_html_e( 'Session fee', 'marnie-therapy' ); ?></dt>
 						<dd>
-							<?php echo esc_html( trim( $price . ' ' . $price_suffix ) ); ?>
+							<?php echo esc_html( $price ); ?>
 							<?php if ( $concessions ) : ?>
 								— <?php echo esc_html( $concessions ); ?>
 							<?php endif; ?>

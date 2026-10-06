@@ -44,7 +44,7 @@ $second_short = get_sub_field( 'secondary_cta_mobile_text' ) ?: $second_cta;
 		<h1 id="hero-heading"><?php echo nl2br( esc_html( $heading ) ); ?></h1>
 
 		<?php if ( $name_line ) : ?>
-			<p class="hero__name"><?php echo esc_html( $name_line ); ?></p>
+			<h2 class="hero__name"><?php echo esc_html( $name_line ); ?></h2>
 		<?php endif; ?>
 
 		<?php if ( $subheading ) : ?>

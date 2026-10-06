@@ -588,9 +588,23 @@ select:focus-visible,
 
 .hero__name {
 	font-family: var(--font-heading);
-	font-size: 1.5rem;
+	font-size: 1.75rem; /* matches h2 at each breakpoint, but not bold */
+	font-weight: 400;
+	color: var(--color-white);
 	letter-spacing: 0.02em;
 	margin: 0 0 var(--space-3);
+}
+
+@media (min-width: 40rem) {
+	.hero__name {
+		font-size: 2rem;
+	}
+}
+
+@media (min-width: 64rem) {
+	.hero__name {
+		font-size: 2.5rem;
+	}
 }
 
 .hero__quote {
@@ -658,10 +672,6 @@ select:focus-visible,
 	.hero__content {
 		text-align: left;
 		padding-block: var(--space-3);
-	}
-
-	.hero__name {
-		font-size: 1.25rem;
 	}
 
 	.hero__subheading {
