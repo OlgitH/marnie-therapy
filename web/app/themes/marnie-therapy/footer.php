@@ -35,7 +35,23 @@ if ( false === $quote_author || null === $quote_author ) {
 	<footer class="site-footer" role="contentinfo">
 		<div class="container site-footer__grid">
 			<div>
-				<p class="site-branding__name" style="color:#fff;"><?php bloginfo( 'name' ); ?></p>
+				<?php $footer_logo = get_field( 'mobile_logo', 'option' ); ?>
+				<div class="site-footer__logo">
+					<?php if ( $footer_logo ) : ?>
+						<a href="<?php echo esc_url( home_url( '/' ) ); ?>">
+							<img
+								src="<?php echo esc_url( $footer_logo['url'] ); ?>"
+								alt="<?php echo esc_attr( $footer_logo['alt'] ?: get_bloginfo( 'name' ) ); ?>"
+								width="<?php echo esc_attr( $footer_logo['width'] ); ?>"
+								height="<?php echo esc_attr( $footer_logo['height'] ); ?>"
+							>
+						</a>
+					<?php elseif ( has_custom_logo() ) : ?>
+						<?php the_custom_logo(); ?>
+					<?php else : ?>
+						<a href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php bloginfo( 'name' ); ?></a>
+					<?php endif; ?>
+				</div>
 				<p><?php esc_html_e( 'Relational psychotherapy in Bath — in person and online.', 'marnie-therapy' ); ?></p>
 				<p>
 					<a href="mailto:<?php echo esc_attr( $contact_email ); ?>"><?php echo esc_html( $contact_email ); ?></a>

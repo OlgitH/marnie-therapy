@@ -27,6 +27,7 @@ Text Domain: marnie-therapy
 	--color-gold-dark: #8f6121;
 	--color-mauve: #ceb6bb;
 	--color-periwinkle: #7384bd;
+	--color-periwinkle-light: #a9b5da;
 	--color-indigo: #3e308b;
 	--color-purple: #7a2ec2;
 	--color-charcoal: #2f2d27;
@@ -1048,12 +1049,25 @@ select:focus-visible,
 
 .quote-band__quote {
 	margin: 0 auto;
-	max-width: 46rem;
+	max-width: 52rem;
 	border: none;
-	padding: 0;
+	padding: var(--space-3) 0 0;
 	font-family: var(--font-heading);
 	font-style: italic;
-	font-size: 1.5rem;
+	font-weight: 700;
+	font-size: clamp(1.9rem, 4.5vw, 3rem);
+	line-height: 1.25;
+	color: var(--color-sage-900);
+	position: relative;
+}
+
+.quote-band__quote::before {
+	content: '';
+	display: block;
+	width: 4rem;
+	height: 4px;
+	margin: 0 auto var(--space-3);
+	background-color: var(--color-gold);
 }
 
 .quote-band__quote p {
@@ -1062,10 +1076,14 @@ select:focus-visible,
 
 .quote-band__quote cite {
 	display: block;
-	margin-top: var(--space-2);
+	margin-top: var(--space-3);
+	font-family: var(--font-body);
 	font-style: normal;
+	font-weight: 600;
 	font-size: 1rem;
-	opacity: 0.85;
+	letter-spacing: 0.12em;
+	text-transform: uppercase;
+	color: var(--color-gold-dark);
 }
 
 /* ==========================================================================
@@ -1073,9 +1091,23 @@ select:focus-visible,
    ========================================================================== */
 
 .site-footer {
-	background-color: var(--color-periwinkle);
+	background-color: var(--color-periwinkle-light);
 	color: var(--color-charcoal-deep);
 	padding-block: var(--space-5) var(--space-3);
+}
+
+.site-footer__logo {
+	margin-bottom: var(--space-2);
+}
+
+.site-footer__logo a {
+	display: inline-block;
+}
+
+.site-footer__logo img {
+	height: var(--header-logo-size);
+	width: auto;
+	max-width: 100%;
 }
 
 .site-footer a {
