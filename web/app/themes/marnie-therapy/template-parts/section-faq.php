@@ -14,26 +14,15 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 $heading    = get_sub_field( 'heading' ) ?: 'Frequently Asked Questions';
 $items      = get_sub_field( 'items' );
-$ukcp_logo  = get_field( 'ukcp_logo', 'option' );
-$bcpc_logo  = get_field( 'bcpc_logo', 'option' );
+$photos     = array_filter( array( get_sub_field( 'photo_1' ), get_sub_field( 'photo_2' ) ) ); // attachment IDs
 ?>
 <section class="section" id="faq" aria-labelledby="faq-heading">
 	<div class="container">
 		<div class="faq-heading">
 			<h2 id="faq-heading"><?php echo esc_html( $heading ); ?></h2>
-
-			<?php if ( $ukcp_logo || $bcpc_logo ) : ?>
-				<div class="faq-heading__logos">
-					<?php if ( $ukcp_logo ) : ?>
-						<img src="<?php echo esc_url( $ukcp_logo['sizes']['thumbnail'] ?? $ukcp_logo['url'] ); ?>" alt="<?php echo esc_attr( $ukcp_logo['alt'] ?: 'UKCP — UK Council for Psychotherapy member' ); ?>" width="120" height="48" loading="lazy" />
-					<?php endif; ?>
-					<?php if ( $bcpc_logo ) : ?>
-						<img src="<?php echo esc_url( $bcpc_logo['sizes']['thumbnail'] ?? $bcpc_logo['url'] ); ?>" alt="<?php echo esc_attr( $bcpc_logo['alt'] ?: 'Bath Centre for Counselling and Psychotherapy' ); ?>" width="120" height="48" loading="lazy" />
-					<?php endif; ?>
-				</div>
-			<?php endif; ?>
 		</div>
 
+		<div class="faq<?php echo $photos ? ' faq--has-photos' : ''; ?>">
 		<?php if ( $items ) : ?>
 			<div class="faq-list" data-faq-list>
 				<?php foreach ( $items as $index => $item ) : ?>
@@ -69,5 +58,27 @@ $bcpc_logo  = get_field( 'bcpc_logo', 'option' );
 				<?php endforeach; ?>
 			</div>
 		<?php endif; ?>
+
+		<?php if ( $photos ) : ?>
+			<div class="faq__photos">
+				<?php foreach ( $photos as $photo ) : ?>
+					<div class="faq__photo">
+						<?php
+						echo wp_get_attachment_image(
+							$photo,
+							'large',
+							false,
+							array(
+								'sizes'    => '(min-width: 56rem) 24rem, 100vw',
+								'loading'  => 'lazy',
+								'decoding' => 'async',
+							)
+						);
+						?>
+					</div>
+				<?php endforeach; ?>
+			</div>
+		<?php endif; ?>
+		</div>
 	</div>
 </section>

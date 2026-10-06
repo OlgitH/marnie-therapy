@@ -775,7 +775,7 @@ select:focus-visible,
 .about {
 	display: grid;
 	gap: var(--space-5);
-	align-items: start;
+	align-items: center;
 }
 
 @media (max-width: 55.99rem) {
@@ -834,15 +834,33 @@ select:focus-visible,
 	margin: 0;
 }
 
-.faq-heading__logos {
-	display: flex;
-	align-items: center;
-	gap: var(--space-2);
+.faq {
+	display: grid;
+	gap: var(--space-4);
 }
 
-.faq-heading__logos img {
-	height: 3rem;
-	width: auto;
+@media (min-width: 56rem) {
+	.faq--has-photos {
+		grid-template-columns: minmax(0, 1fr) minmax(0, 24rem);
+		align-items: start;
+	}
+}
+
+.faq__photos {
+	display: grid;
+	gap: var(--space-3);
+}
+
+.faq__photo {
+	border-radius: var(--radius);
+	overflow: hidden;
+	box-shadow: var(--shadow-soft);
+}
+
+.faq__photo img {
+	display: block;
+	width: 100%;
+	height: auto;
 }
 
 .faq-list {
@@ -1025,6 +1043,25 @@ select:focus-visible,
 	border-color: var(--color-gold-dark);
 }
 
+.contact__aside {
+	display: grid;
+	gap: var(--space-3);
+}
+
+.contact__logos {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: var(--space-3);
+}
+
+.contact__logos img {
+	height: 3.75rem;
+	width: auto;
+	max-width: none;
+	object-fit: contain;
+}
+
 .contact__map {
 	border-radius: var(--radius);
 	overflow: hidden;
@@ -1055,10 +1092,22 @@ select:focus-visible,
 	font-family: var(--font-heading);
 	font-style: italic;
 	font-weight: 700;
-	font-size: clamp(1.9rem, 4.5vw, 3rem);
+	font-size: 2.25rem; /* matches the hero h1 at each breakpoint */
 	line-height: 1.25;
 	color: var(--color-sage-900);
 	position: relative;
+}
+
+@media (min-width: 40rem) {
+	.quote-band__quote {
+		font-size: 2.75rem;
+	}
+}
+
+@media (min-width: 64rem) {
+	.quote-band__quote {
+		font-size: 2.8rem;
+	}
 }
 
 .quote-band__quote::before {

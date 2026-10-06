@@ -10,6 +10,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 $contact_email = get_field( 'contact_email', 'option' ) ?: 'marnietherapy@gmail.com';
 $footer_note   = get_field( 'footer_note', 'option' );
 
+$footer_description = get_field( 'footer_description', 'option' );
+if ( false === $footer_description || null === $footer_description ) {
+	$footer_description = 'Relational psychotherapy in Bath — in person and online.';
+}
+
 $quote_text = get_field( 'closing_quote_text', 'option' );
 if ( false === $quote_text || null === $quote_text ) {
 	$quote_text = 'I am not what happened to me, I am what I choose to become.';
@@ -52,7 +57,9 @@ if ( false === $quote_author || null === $quote_author ) {
 						<a href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php bloginfo( 'name' ); ?></a>
 					<?php endif; ?>
 				</div>
-				<p><?php esc_html_e( 'Relational psychotherapy in Bath — in person and online.', 'marnie-therapy' ); ?></p>
+				<?php if ( $footer_description ) : ?>
+					<p><?php echo esc_html( $footer_description ); ?></p>
+				<?php endif; ?>
 				<p>
 					<a href="mailto:<?php echo esc_attr( $contact_email ); ?>"><?php echo esc_html( $contact_email ); ?></a>
 				</p>

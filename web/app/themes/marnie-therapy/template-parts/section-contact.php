@@ -18,6 +18,8 @@ $price_suffix = ( false === $price_suffix || null === $price_suffix ) ? 'per ses
 $concessions  = get_field( 'concessions_note', 'option' );
 $address      = get_field( 'practice_address', 'option' ) ?: "Bathwick\nBath, BA2 4DU";
 $map_embed    = get_field( 'map_embed_url', 'option' );
+$ukcp_logo    = get_field( 'ukcp_logo', 'option' );
+$bcpc_logo    = get_field( 'bcpc_logo', 'option' );
 
 if ( ! $map_embed ) {
 	// Google's key-less embed endpoint: no WebGL dependency (unlike OSM's
@@ -128,13 +130,28 @@ if ( ! $map_embed ) {
 				<?php endif; ?>
 			</div>
 
-			<?php if ( $show_map ) : ?>
-				<div class="contact__map">
-					<iframe
-						src="<?php echo esc_url( $map_embed ); ?>"
-						title="<?php esc_attr_e( 'Map showing the location of Marnie Therapy in Bath', 'marnie-therapy' ); ?>"
-						loading="lazy"
-					></iframe>
+			<?php if ( $show_map || $ukcp_logo || $bcpc_logo ) : ?>
+				<div class="contact__aside">
+					<?php if ( $ukcp_logo || $bcpc_logo ) : ?>
+						<div class="contact__logos">
+							<?php if ( $ukcp_logo ) : ?>
+								<img src="<?php echo esc_url( $ukcp_logo['sizes']['medium'] ?? $ukcp_logo['url'] ); ?>" alt="<?php echo esc_attr( $ukcp_logo['alt'] ?: 'UKCP — UK Council for Psychotherapy member' ); ?>" width="120" height="48" loading="lazy" />
+							<?php endif; ?>
+							<?php if ( $bcpc_logo ) : ?>
+								<img src="<?php echo esc_url( $bcpc_logo['sizes']['medium'] ?? $bcpc_logo['url'] ); ?>" alt="<?php echo esc_attr( $bcpc_logo['alt'] ?: 'Bath Centre for Counselling and Psychotherapy' ); ?>" width="120" height="48" loading="lazy" />
+							<?php endif; ?>
+						</div>
+					<?php endif; ?>
+
+					<?php if ( $show_map ) : ?>
+						<div class="contact__map">
+							<iframe
+								src="<?php echo esc_url( $map_embed ); ?>"
+								title="<?php esc_attr_e( 'Map showing the location of Marnie Therapy in Bath', 'marnie-therapy' ); ?>"
+								loading="lazy"
+							></iframe>
+						</div>
+					<?php endif; ?>
 				</div>
 			<?php endif; ?>
 		</div>
