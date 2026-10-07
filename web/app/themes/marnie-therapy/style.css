@@ -588,8 +588,9 @@ select:focus-visible,
 
 .hero__name {
 	font-family: var(--font-heading);
-	font-size: 1.75rem; /* matches h2 at each breakpoint, but not bold */
+	font-size: 1.75rem; /* matches h2 at each breakpoint */
 	font-weight: 400;
+	font-style: italic;
 	color: var(--color-white);
 	letter-spacing: 0.02em;
 	margin: 0 0 var(--space-3);
@@ -978,11 +979,31 @@ select:focus-visible,
 	gap: var(--space-4);
 }
 
+/* Desktop: details + map on the first row, enquiry form + logos on the second,
+   so the logos line up with the "Send an enquiry" heading. */
+.contact__main { order: 1; }
+.contact__enquiry { order: 2; }
+.contact__map { order: 3; }
+.contact__logos { order: 4; }
+
 @media (min-width: 56rem) {
 	.contact {
 		grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
 		align-items: start;
+		row-gap: 0;
 	}
+
+	.contact__main,
+	.contact__enquiry,
+	.contact__map,
+	.contact__logos {
+		order: 0;
+	}
+
+	.contact__main { grid-column: 1; grid-row: 1; }
+	.contact__map { grid-column: 2; grid-row: 1; }
+	.contact__enquiry { grid-column: 1; grid-row: 2; }
+	.contact__logos { grid-column: 2; grid-row: 2; }
 }
 
 .contact__details {
@@ -1003,6 +1024,11 @@ select:focus-visible,
 }
 
 .contact__form-heading {
+	margin-top: 0;
+}
+
+.contact__enquiry,
+.contact__logos {
 	margin-top: var(--space-4);
 }
 
@@ -1079,11 +1105,6 @@ select:focus-visible,
 .form-notice--invalid,
 .form-notice--error {
 	border-color: var(--color-gold-dark);
-}
-
-.contact__aside {
-	display: grid;
-	gap: var(--space-3);
 }
 
 .contact__logos {
