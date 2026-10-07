@@ -143,10 +143,10 @@ if ( ! $map_embed ) {
 					<?php if ( $ukcp_logo || $bcpc_logo ) : ?>
 						<div class="contact__logos">
 							<?php if ( $ukcp_logo ) : ?>
-								<img src="<?php echo esc_url( $ukcp_logo['sizes']['medium'] ?? $ukcp_logo['url'] ); ?>" alt="<?php echo esc_attr( $ukcp_logo['alt'] ?: 'UKCP — UK Council for Psychotherapy member' ); ?>" width="120" height="48" loading="lazy" />
+								<img src="<?php echo esc_url( $ukcp_logo['sizes']['medium'] ?? $ukcp_logo['url'] ); ?>" alt="<?php echo esc_attr( $ukcp_logo['alt'] ?: 'UKCP — UK Council for Psychotherapy member' ); ?>" width="240" height="104" loading="lazy" />
 							<?php endif; ?>
 							<?php if ( $bcpc_logo ) : ?>
-								<img src="<?php echo esc_url( $bcpc_logo['sizes']['medium'] ?? $bcpc_logo['url'] ); ?>" alt="<?php echo esc_attr( $bcpc_logo['alt'] ?: 'Bath Centre for Counselling and Psychotherapy' ); ?>" width="120" height="48" loading="lazy" />
+								<img src="<?php echo esc_url( $bcpc_logo['sizes']['medium'] ?? $bcpc_logo['url'] ); ?>" alt="<?php echo esc_attr( $bcpc_logo['alt'] ?: 'Bath Centre for Counselling and Psychotherapy' ); ?>" width="240" height="104" loading="lazy" />
 							<?php endif; ?>
 						</div>
 					<?php endif; ?>
