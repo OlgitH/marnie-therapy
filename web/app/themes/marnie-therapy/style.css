@@ -611,10 +611,11 @@ select:focus-visible,
 
 .hero__quote {
 	margin: var(--space-4) auto 0;
-	max-width: 46rem;
+	max-width: none;
 	font-family: var(--font-heading);
 	font-style: italic;
-	font-size: 1.35rem;
+	font-size: 1.6rem;
+	line-height: 1.25;
 	border: none;
 	padding: 0;
 }
@@ -626,6 +627,16 @@ select:focus-visible,
 /* Keep the quote on a single line wherever there is room for it; below
    this width it wraps normally so it never overflows the screen. */
 @media (min-width: 52rem) {
+	.hero__content {
+		max-width: 56rem;
+	}
+}
+
+@media (min-width: 64rem) {
+	.hero__quote {
+		font-size: 1.9rem;
+	}
+
 	.hero__quote p {
 		white-space: nowrap;
 	}
@@ -633,10 +644,12 @@ select:focus-visible,
 
 .hero__quote cite {
 	display: block;
-	margin-top: var(--space-1);
+	margin-top: 0.75rem;
 	font-style: normal;
-	font-size: 1rem;
-	opacity: 0.85;
+	font-size: 1.05rem;
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+	opacity: 0.9;
 }
 
 .hero__actions {
@@ -689,7 +702,7 @@ select:focus-visible,
 
 	.hero__quote {
 		margin: var(--space-3) 0 0;
-		font-size: 1.125rem;
+		font-size: 1.3rem;
 	}
 
 	.hero__quote cite {
@@ -792,7 +805,6 @@ select:focus-visible,
 	border-radius: var(--radius);
 	overflow: hidden;
 	box-shadow: var(--shadow-soft);
-	aspect-ratio: 3 / 4; /* the photo's own shape, so none of the room is cropped away */
 	width: 100%;
 	max-width: 22rem; /* don't balloon between phone and desktop widths */
 }
@@ -802,9 +814,9 @@ select:focus-visible,
 }
 
 .therapy-intro__image img {
+	/* The frame takes the photo's own shape, so nothing is cropped by default. */
 	width: 100%;
-	height: 100%;
-	object-fit: cover;
+	height: auto;
 	transform: scale(var(--photo-zoom, 1)); /* zoom set in the Therapy block */
 }
 
@@ -1289,21 +1301,13 @@ select:focus-visible,
 	margin: 0;
 }
 
-/* Quote directly below the hero: tighter than the closing band. */
-/* Chosen design (option 3): its own lavender section below the hero.
-   Alternatives the client considered, to switch back if she changes her mind:
-   1. Cream band: remove the background-color below (it falls back to --color-cream).
-   2. Quote inside the hero: in section-hero.php move the blockquote from the
-      .quote-band--intro section to just before .hero__actions, give it the
-      class hero__quote, and use font-size 1.9rem on .hero__quote. */
-.quote-band--intro {
-	background-color: var(--color-lavender);
-	padding-block: var(--space-4);
-}
-
-.quote-band--intro .quote-band__quote {
-	padding-top: 0;
-}
+/* Hero quote layout: the client chose option 2 (quote inside the hero, larger).
+   Alternatives she considered, to switch back if she changes her mind:
+   1. Own section below the hero: move the blockquote out of .hero__content into
+      <section class="quote-band quote-band--intro"> after the hero (class
+      quote-band__quote), with .quote-band--intro { padding-block: var(--space-4); }
+      and, for option 3, background-color: var(--color-lavender) (#e8e5f1);
+      leave the background off for option 1 (plain cream). */
 
 /* Quote on one line, author beneath (as in the hero), where there is room. */
 @media (min-width: 64rem) {
