@@ -992,6 +992,7 @@ select:focus-visible,
 	width: 100%;
 	height: 100%;
 	object-fit: cover;
+	transform: scale(var(--photo-zoom, 1)); /* zoom set per photo in the FAQ block */
 }
 
 .faq-list {

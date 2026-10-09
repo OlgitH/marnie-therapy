@@ -14,7 +14,17 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 $heading    = get_sub_field( 'heading' ) ?: 'Frequently Asked Questions';
 $items      = get_sub_field( 'items' );
-$photos     = array_filter( array( get_sub_field( 'photo_1' ), get_sub_field( 'photo_2' ), get_sub_field( 'photo_3' ) ) ); // attachment IDs
+$photos     = array(); // each: attachment ID + zoom percentage
+foreach ( array( 1, 2, 3 ) as $n ) {
+	$photo_id = get_sub_field( 'photo_' . $n );
+	if ( $photo_id ) {
+		$zoom     = (int) get_sub_field( 'photo_' . $n . '_zoom' );
+		$photos[] = array(
+			'id'   => $photo_id,
+			'zoom' => max( 100, $zoom ?: 100 ),
+		);
+	}
+}
 ?>
 <section class="section" id="faq" aria-labelledby="faq-heading">
 	<div class="container">
@@ -62,10 +72,10 @@ $photos     = array_filter( array( get_sub_field( 'photo_1' ), get_sub_field( 'p
 		<?php if ( $photos ) : ?>
 			<div class="faq__photos">
 				<?php foreach ( $photos as $photo ) : ?>
-					<div class="faq__photo">
+					<div class="faq__photo" style="--photo-zoom: <?php echo esc_attr( $photo['zoom'] / 100 ); ?>">
 						<?php
 						echo wp_get_attachment_image(
-							$photo,
+							$photo['id'],
 							'large',
 							false,
 							array(
