@@ -83,8 +83,21 @@ function marnie_register_home_sections_fields() {
 									'label'         => 'Name Line',
 									'name'          => 'name_line',
 									'type'          => 'text',
-									'instructions'  => 'Shown under the heading, e.g. Marnie Kavanagh.',
+									'instructions'  => 'e.g. Marnie Kavanagh.',
 									'default_value' => 'Marnie Kavanagh',
+								),
+								array(
+									'key'           => 'field_mt_hero_name_position',
+									'label'         => 'Name Position',
+									'name'          => 'name_position',
+									'type'          => 'select',
+									'choices'       => array(
+										'before' => 'Name above the heading',
+										'after'  => 'Name below the heading',
+									),
+									'default_value' => 'before',
+									'return_format' => 'value',
+									'instructions'  => 'Where the name line sits relative to the main heading.',
 								),
 								array(
 									'key'   => 'field_mt_hero_subheading',

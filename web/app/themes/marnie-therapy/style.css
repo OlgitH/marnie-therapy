@@ -597,6 +597,10 @@ select:focus-visible,
 	margin: 0 0 var(--space-1);
 }
 
+.hero__name--after {
+	margin: var(--space-1) 0 0;
+}
+
 @media (min-width: 40rem) {
 	.hero__name {
 		font-size: 2rem;
