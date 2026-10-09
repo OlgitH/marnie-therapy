@@ -39,7 +39,7 @@ $zoom    = (int) get_sub_field( 'image_zoom' ) ?: 100;
 						false,
 						array(
 							'alt'      => $image_alt ? $image_alt : '',
-							'sizes'    => '(min-width: 56rem) 22rem, min(100vw, 22rem)',
+							'sizes'    => '(min-width: 56rem) 22rem, min(100vw, 28rem)',
 							'loading'  => 'eager',
 							'decoding' => 'async',
 						)

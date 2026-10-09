@@ -806,7 +806,7 @@ select:focus-visible,
 	overflow: hidden;
 	box-shadow: var(--shadow-soft);
 	width: 100%;
-	max-width: 22rem; /* don't balloon between phone and desktop widths */
+	max-width: 28rem; /* same width as the About Me photo on phones; the 22rem grid column caps it on desktop */
 }
 
 .therapy-intro__image {
