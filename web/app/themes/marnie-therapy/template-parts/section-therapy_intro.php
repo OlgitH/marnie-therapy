@@ -34,7 +34,7 @@ $image   = get_sub_field( 'image' ); // attachment ID
 					$image_alt = get_post_meta( $image, '_wp_attachment_image_alt', true );
 					echo wp_get_attachment_image(
 						$image,
-						'about-lg',
+						'large', // uncropped, so the whole room shows (about-lg is hard-cropped to 4:5)
 						false,
 						array(
 							'alt'      => $image_alt ? $image_alt : '',

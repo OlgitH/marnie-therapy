@@ -29,6 +29,7 @@ Text Domain: marnie-therapy
 	--color-periwinkle: #7384bd;
 	--color-periwinkle-light: #a9b5da;
 	--color-indigo: #3e308b;
+	--color-lavender: #e8e5f1;
 	--color-purple: #7a2ec2;
 	--color-charcoal: #2f2d27;
 	--color-charcoal-deep: #1a1713;
@@ -589,11 +590,11 @@ select:focus-visible,
 .hero__name {
 	font-family: var(--font-heading);
 	font-size: 1.75rem; /* matches h2 at each breakpoint */
-	font-weight: 400;
+	font-weight: 700;
 	font-style: normal;
 	color: var(--color-indigo);
 	letter-spacing: 0.02em;
-	margin: 0 0 var(--space-3);
+	margin: 0 0 var(--space-1);
 }
 
 @media (min-width: 40rem) {
@@ -791,7 +792,7 @@ select:focus-visible,
 	border-radius: var(--radius);
 	overflow: hidden;
 	box-shadow: var(--shadow-soft);
-	aspect-ratio: 4 / 5;
+	aspect-ratio: 3 / 4; /* the photo's own shape, so none of the room is cropped away */
 	width: 100%;
 	max-width: 22rem; /* don't balloon between phone and desktop widths */
 }
@@ -1208,9 +1209,9 @@ select:focus-visible,
 .contact__logos {
 	display: grid;
 	grid-template-columns: minmax(0, 1fr);
-	justify-items: start;
+	justify-items: center;
 	align-content: start;
-	gap: var(--space-3);
+	gap: var(--space-5);
 }
 
 .contact__logos img {
@@ -1218,7 +1219,7 @@ select:focus-visible,
 	height: 6.5rem;
 	max-width: 100%;
 	object-fit: contain;
-	object-position: left center;
+	object-position: center;
 }
 
 .contact__map {
@@ -1283,7 +1284,14 @@ select:focus-visible,
 }
 
 /* Quote directly below the hero: tighter than the closing band. */
+/* Chosen design (option 3): its own lavender section below the hero.
+   Alternatives the client considered, to switch back if she changes her mind:
+   1. Cream band: remove the background-color below (it falls back to --color-cream).
+   2. Quote inside the hero: in section-hero.php move the blockquote from the
+      .quote-band--intro section to just before .hero__actions, give it the
+      class hero__quote, and use font-size 1.9rem on .hero__quote. */
 .quote-band--intro {
+	background-color: var(--color-lavender);
 	padding-block: var(--space-4);
 }
 
