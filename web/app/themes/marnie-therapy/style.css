@@ -810,6 +810,7 @@ select:focus-visible,
 }
 
 .therapy-intro__image {
+	align-self: center; /* vertically centred beside the text on desktop */
 	background-color: var(--color-cream-soft); /* shows when the photo is zoomed out below 100% */
 }
 
