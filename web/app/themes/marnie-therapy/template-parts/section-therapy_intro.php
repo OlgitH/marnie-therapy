@@ -10,6 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 $heading = get_sub_field( 'heading' ) ?: 'Therapy';
 $content = get_sub_field( 'content' );
 $image   = get_sub_field( 'image' ); // attachment ID
+$zoom    = (int) get_sub_field( 'image_zoom' ) ?: 100;
 ?>
 <section class="section" id="therapy" aria-labelledby="therapy-heading">
 	<div class="container">
@@ -23,7 +24,7 @@ $image   = get_sub_field( 'image' ); // attachment ID
 			</div>
 
 			<?php if ( $image ) : ?>
-				<div class="therapy-intro__image">
+				<div class="therapy-intro__image" style="--photo-zoom: <?php echo esc_attr( max( 50, $zoom ) / 100 ); ?>">
 					<?php
 					// Fixed column on desktop, full-width below the text on
 					// mobile (matches the .therapy-intro grid breakpoint in

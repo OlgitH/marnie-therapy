@@ -169,6 +169,18 @@ function marnie_register_home_sections_fields() {
 									'preview_size'  => 'medium',
 									'instructions'  => 'Optional image shown beside the text. Upload a tall portrait photo, ideally at least 1200px tall — max 8MB, and WordPress will automatically create smaller optimised versions for phones and tablets.',
 								),
+								array(
+									'key'           => 'field_mt_therapy_image_zoom',
+									'label'         => 'Image zoom',
+									'name'          => 'image_zoom',
+									'type'          => 'range',
+									'min'           => 50,
+									'max'           => 300,
+									'step'          => 5,
+									'default_value' => 100,
+									'append'        => '%',
+									'instructions'  => '100% shows the whole photo in its frame. Lower zooms out (the frame shows a plain border around the photo); higher zooms in on the centre.',
+								),
 							),
 						),
 						'layout_mt_about'         => array(

@@ -797,10 +797,15 @@ select:focus-visible,
 	max-width: 22rem; /* don't balloon between phone and desktop widths */
 }
 
+.therapy-intro__image {
+	background-color: var(--color-cream-soft); /* shows when the photo is zoomed out below 100% */
+}
+
 .therapy-intro__image img {
 	width: 100%;
 	height: 100%;
 	object-fit: cover;
+	transform: scale(var(--photo-zoom, 1)); /* zoom set in the Therapy block */
 }
 
 /* ==========================================================================
