@@ -125,5 +125,23 @@
 				panel.hidden = expanded;
 			});
 		});
+
+		// Size the photo collage to the collapsed list, so opening an answer
+		// doesn't stretch the photos (or shift anything else).
+		var faq = list.closest('.faq');
+		if (faq && faq.querySelector('.faq__photos')) {
+			var syncFaqPhotos = function () {
+				var height = 0;
+				list.querySelectorAll('.faq-item > h3').forEach(function (heading) {
+					height += heading.offsetHeight + 1; // + the item's bottom border
+				});
+				faq.style.setProperty('--faq-photos-height', height + 1 + 'px');
+			};
+			syncFaqPhotos();
+			window.addEventListener('resize', syncFaqPhotos);
+			if (document.fonts && document.fonts.ready) {
+				document.fonts.ready.then(syncFaqPhotos);
+			}
+		}
 	});
 })();

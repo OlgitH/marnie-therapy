@@ -908,6 +908,8 @@ select:focus-visible,
 		max-width: 18rem;
 		justify-self: end;
 		width: 100%;
+		height: var(--faq-photos-height, auto); /* collapsed list height, set in main.js */
+		align-items: stretch; /* otherwise the absolutely-positioned images collapse to nothing */
 	}
 
 	.faq__photo {
@@ -922,6 +924,49 @@ select:focus-visible,
 	}
 }
 
+/* Laptops and up: questions take half the width, photos form a collage in the
+   other half — one tall photo beside two stacked ones — filling the same height. */
+@media (min-width: 64rem) {
+	.faq--has-photos {
+		grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+		column-gap: var(--space-5);
+	}
+
+	.faq__photos {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+		grid-template-rows: minmax(0, 1fr) minmax(0, 1fr);
+		gap: var(--space-2);
+		max-width: none;
+		justify-self: stretch;
+		align-items: stretch;
+	}
+
+	.faq__photo:nth-child(1) {
+		grid-column: 1;
+		grid-row: 1 / span 2;
+
+		/* Shorter than the pair beside it and centred, so the collage isn't perfectly aligned. */
+		align-self: center;
+		height: 80%;
+	}
+
+	.faq__photo:nth-child(2) {
+		grid-column: 2;
+		grid-row: 1;
+	}
+
+	.faq__photo:nth-child(3) {
+		grid-column: 2;
+		grid-row: 2;
+	}
+
+	/* With only two photos, the second fills the right-hand column. */
+	.faq__photo:nth-child(2):last-child {
+		grid-row: 1 / span 2;
+	}
+}
+
 .faq__photo {
 	border-radius: var(--radius);
 	overflow: hidden;
@@ -931,6 +976,13 @@ select:focus-visible,
 @media (max-width: 55.99rem) {
 	.faq__photo {
 		aspect-ratio: 4 / 5;
+	}
+}
+
+/* Square corners on the laptop-and-up collage. */
+@media (min-width: 64rem) {
+	.faq__photo {
+		border-radius: 0;
 	}
 }
 
@@ -1232,7 +1284,11 @@ select:focus-visible,
 
 /* Quote directly below the hero: tighter than the closing band. */
 .quote-band--intro {
-	padding-block: var(--space-5);
+	padding-block: var(--space-4);
+}
+
+.quote-band--intro .quote-band__quote {
+	padding-top: 0;
 }
 
 /* Quote on one line, author beneath (as in the hero), where there is room. */
