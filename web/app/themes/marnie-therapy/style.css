@@ -886,23 +886,39 @@ select:focus-visible,
 @media (min-width: 56rem) {
 	.faq--has-photos {
 		grid-template-columns: minmax(0, 1fr) minmax(0, 18rem);
-		align-items: start;
+		align-items: stretch;
 	}
 }
 
 .faq__photos {
 	display: grid;
-	grid-template-columns: repeat(2, minmax(0, 1fr)); /* side by side on tablets and below */
-	gap: var(--space-3);
-	align-items: start; /* each photo keeps its natural height */
-	max-width: 30rem;
+	grid-template-columns: repeat(3, minmax(0, 1fr)); /* side by side on tablets and below */
+	gap: var(--space-2);
+	align-items: start;
+	max-width: 36rem;
 }
 
 @media (min-width: 56rem) {
+	/* Stacked beside the questions, sharing exactly their height: the images
+	   are absolutely positioned so they never push the row taller. */
 	.faq__photos {
-		grid-template-columns: minmax(0, 1fr); /* stacked beside the questions */
+		display: flex;
+		flex-direction: column;
+		gap: var(--space-2);
 		max-width: 18rem;
 		justify-self: end;
+		width: 100%;
+	}
+
+	.faq__photo {
+		position: relative;
+		flex: 1 1 0;
+		min-height: 6rem;
+	}
+
+	.faq__photo img {
+		position: absolute;
+		inset: 0;
 	}
 }
 
@@ -912,8 +928,10 @@ select:focus-visible,
 	box-shadow: var(--shadow-soft);
 }
 
-.faq__photo {
-	aspect-ratio: 4 / 5;
+@media (max-width: 55.99rem) {
+	.faq__photo {
+		aspect-ratio: 4 / 5;
+	}
 }
 
 .faq__photo img {

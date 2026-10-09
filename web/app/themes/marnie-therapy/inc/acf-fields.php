@@ -232,7 +232,7 @@ function marnie_register_home_sections_fields() {
 									'type'          => 'image',
 									'return_format' => 'id',
 									'preview_size'  => 'medium',
-									'instructions'  => 'Shown beside the questions, above Photo 2. Max 8MB.',
+									'instructions'  => 'Shown beside the questions, above Photo 2. Max 8MB. Photos 1-3 are cropped to fit the height of the questions.',
 								),
 								array(
 									'key'           => 'field_mt_faq_photo_2',
@@ -242,6 +242,15 @@ function marnie_register_home_sections_fields() {
 									'return_format' => 'id',
 									'preview_size'  => 'medium',
 									'instructions'  => 'Shown beside the questions, below Photo 1. Max 8MB.',
+								),
+								array(
+									'key'           => 'field_mt_faq_photo_3',
+									'label'         => 'Photo 3 (bottom)',
+									'name'          => 'photo_3',
+									'type'          => 'image',
+									'return_format' => 'id',
+									'preview_size'  => 'medium',
+									'instructions'  => 'Shown beside the questions, below Photo 2. Max 8MB.',
 								),
 								array(
 									'key'          => 'field_mt_faq_items',

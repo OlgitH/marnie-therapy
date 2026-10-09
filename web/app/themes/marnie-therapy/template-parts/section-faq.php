@@ -14,7 +14,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 $heading    = get_sub_field( 'heading' ) ?: 'Frequently Asked Questions';
 $items      = get_sub_field( 'items' );
-$photos     = array_filter( array( get_sub_field( 'photo_1' ), get_sub_field( 'photo_2' ) ) ); // attachment IDs
+$photos     = array_filter( array( get_sub_field( 'photo_1' ), get_sub_field( 'photo_2' ), get_sub_field( 'photo_3' ) ) ); // attachment IDs
 ?>
 <section class="section" id="faq" aria-labelledby="faq-heading">
 	<div class="container">
@@ -69,7 +69,7 @@ $photos     = array_filter( array( get_sub_field( 'photo_1' ), get_sub_field( 'p
 							'large',
 							false,
 							array(
-								'sizes'    => '(min-width: 56rem) 18rem, 50vw',
+								'sizes'    => '(min-width: 56rem) 18rem, 33vw',
 								'loading'  => 'lazy',
 								'decoding' => 'async',
 							)
