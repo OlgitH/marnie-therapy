@@ -185,6 +185,14 @@ function marnie_register_home_sections_fields() {
 									'default_value' => 'About Me',
 								),
 								array(
+									'key'           => 'field_mt_about_name_line',
+									'label'         => 'Name Line',
+									'name'          => 'name_line',
+									'type'          => 'text',
+									'instructions'  => 'Professional and legal name, shown in purple above the bio. Remove it from the bio text below if it is there too.',
+									'default_value' => 'Marnie Kavanagh (formerly known as Marianne Black)',
+								),
+								array(
 									'key'           => 'field_mt_about_photo',
 									'label'         => 'Photo',
 									'name'          => 'photo',
@@ -549,6 +557,14 @@ function marnie_register_site_settings_fields() {
 					'type'          => 'image',
 					'return_format' => 'array',
 					'preview_size'  => 'medium',
+				),
+				array(
+					'key'           => 'field_mt_settings_footer_name',
+					'label'         => 'Footer Name',
+					'name'          => 'footer_name',
+					'type'          => 'text',
+					'default_value' => 'Marnie Kavanagh (formerly known as Marianne Black)',
+					'instructions'  => 'Professional and legal name, shown on its own line in the footer.',
 				),
 				array(
 					'key'           => 'field_mt_settings_footer_description',

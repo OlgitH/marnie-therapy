@@ -23,6 +23,15 @@ $quote_author = get_field( 'closing_quote_author', 'option' );
 if ( false === $quote_author || null === $quote_author ) {
 	$quote_author = 'Carl Jung';
 }
+
+$footer_name = get_field( 'footer_name', 'option' );
+if ( false === $footer_name || null === $footer_name ) {
+	$footer_name = 'Marnie Kavanagh (formerly known as Marianne Black)';
+}
+// The name now has its own line: drop it from the description if it was typed there too.
+if ( $footer_name && $footer_description && 0 === strpos( $footer_description, $footer_name ) ) {
+	$footer_description = trim( substr( $footer_description, strlen( $footer_name ) ) );
+}
 ?>
 	<?php if ( is_front_page() && $quote_text ) : ?>
 		<section class="quote-band" aria-label="<?php esc_attr_e( 'Quote', 'marnie-therapy' ); ?>">
@@ -57,6 +66,9 @@ if ( false === $quote_author || null === $quote_author ) {
 						<a href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php bloginfo( 'name' ); ?></a>
 					<?php endif; ?>
 				</div>
+				<?php if ( $footer_name ) : ?>
+					<p class="site-footer__name"><?php echo esc_html( $footer_name ); ?></p>
+				<?php endif; ?>
 				<?php if ( $footer_description ) : ?>
 					<p><?php echo esc_html( $footer_description ); ?></p>
 				<?php endif; ?>

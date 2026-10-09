@@ -51,15 +51,6 @@ $second_short = get_sub_field( 'secondary_cta_mobile_text' ) ?: $second_cta;
 			<p class="hero__subheading"><?php echo nl2br( esc_html( $subheading ) ); ?></p>
 		<?php endif; ?>
 
-		<?php if ( $quote_text ) : ?>
-			<blockquote class="hero__quote">
-				<p>&ldquo;<?php echo esc_html( $quote_text ); ?>&rdquo;</p>
-				<?php if ( $quote_author ) : ?>
-					<cite>&mdash; <?php echo esc_html( $quote_author ); ?></cite>
-				<?php endif; ?>
-			</blockquote>
-		<?php endif; ?>
-
 		<div class="hero__actions">
 			<a class="btn btn--primary" href="#contact"><?php echo esc_html( $cta_text ); ?></a>
 			<a class="btn btn--outline" href="#therapy">
@@ -69,3 +60,16 @@ $second_short = get_sub_field( 'secondary_cta_mobile_text' ) ?: $second_cta;
 		</div>
 	</div>
 </section>
+
+<?php if ( $quote_text ) : ?>
+	<section class="quote-band quote-band--intro" aria-label="<?php esc_attr_e( 'Quote', 'marnie-therapy' ); ?>">
+		<div class="container">
+			<blockquote class="quote-band__quote">
+				<p>&ldquo;<?php echo esc_html( $quote_text ); ?>&rdquo;</p>
+				<?php if ( $quote_author ) : ?>
+					<cite>&mdash; <?php echo esc_html( $quote_author ); ?></cite>
+				<?php endif; ?>
+			</blockquote>
+		</div>
+	</section>
+<?php endif; ?>

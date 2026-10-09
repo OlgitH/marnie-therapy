@@ -55,12 +55,6 @@ if ( ! $map_embed ) {
 					</div>
 				</dl>
 
-				<p>
-					<a class="btn btn--primary" href="mailto:<?php echo esc_attr( $email ); ?>">
-						<?php esc_html_e( 'Email Marnie to book a first session', 'marnie-therapy' ); ?>
-					</a>
-				</p>
-
 				<?php
 				$contact_status = isset( $_GET['contact'] ) ? sanitize_key( wp_unslash( $_GET['contact'] ) ) : '';
 				$status_notices = array(
@@ -134,9 +128,12 @@ if ( ! $map_embed ) {
 							<span><?php esc_html_e( 'I agree for the details I have given to be used to reply to this enquiry.', 'marnie-therapy' ); ?></span>
 						</label>
 
-						<p>
+						<div class="contact-form__actions">
 							<button type="submit" class="btn btn--primary"><?php esc_html_e( 'Send message', 'marnie-therapy' ); ?></button>
-						</p>
+							<a class="btn btn--call" href="mailto:<?php echo esc_attr( $email ); ?>">
+								<?php esc_html_e( 'Email Marnie to book a first session', 'marnie-therapy' ); ?>
+							</a>
+						</div>
 					</form>
 				<?php endif; ?>
 			</div>

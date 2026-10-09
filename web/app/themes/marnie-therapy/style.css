@@ -590,8 +590,8 @@ select:focus-visible,
 	font-family: var(--font-heading);
 	font-size: 1.75rem; /* matches h2 at each breakpoint */
 	font-weight: 400;
-	font-style: italic;
-	color: var(--color-white);
+	font-style: normal;
+	color: var(--color-indigo);
 	letter-spacing: 0.02em;
 	margin: 0 0 var(--space-3);
 }
@@ -644,6 +644,12 @@ select:focus-visible,
 	justify-content: center;
 	gap: var(--space-2);
 	flex-wrap: wrap;
+}
+
+/* Smaller buttons so the header feels less busy. */
+.hero__actions .btn {
+	padding: 0.6em 1.4em;
+	font-size: 0.95rem;
 }
 
 .hero__btn-short {
@@ -823,13 +829,23 @@ select:focus-visible,
 	overflow: hidden;
 	box-shadow: var(--shadow-soft);
 	aspect-ratio: 4 / 5;
-	width: 10rem; /* thumbnail on mobile */
+	width: 100%; /* full size on mobile */
+	max-width: 28rem;
 }
 
 @media (min-width: 56rem) {
 	.about__photo {
 		width: auto;
+		max-width: none;
 	}
+}
+
+.about__name {
+	font-family: var(--font-heading);
+	font-size: 1.5rem;
+	line-height: 1.25;
+	color: var(--color-indigo);
+	margin: 0 0 var(--space-2);
 }
 
 .about__photo img {
@@ -896,10 +912,15 @@ select:focus-visible,
 	box-shadow: var(--shadow-soft);
 }
 
+.faq__photo {
+	aspect-ratio: 4 / 5;
+}
+
 .faq__photo img {
 	display: block;
 	width: 100%;
-	height: auto;
+	height: 100%;
+	object-fit: cover;
 }
 
 .faq-list {
@@ -1072,6 +1093,13 @@ select:focus-visible,
 	resize: vertical;
 }
 
+.contact-form__actions {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: var(--space-2);
+}
+
 .contact-form__consent {
 	display: flex;
 	align-items: flex-start;
@@ -1109,16 +1137,18 @@ select:focus-visible,
 
 .contact__logos {
 	display: grid;
-	grid-template-columns: repeat(2, minmax(0, 1fr));
-	align-items: center;
-	gap: var(--space-4);
+	grid-template-columns: minmax(0, 1fr);
+	justify-items: start;
+	align-content: start;
+	gap: var(--space-3);
 }
 
 .contact__logos img {
-	width: 100%;
+	width: 15rem;
 	height: 6.5rem;
-	max-width: none;
+	max-width: 100%;
 	object-fit: contain;
+	object-position: left center;
 }
 
 .contact__map {
@@ -1182,6 +1212,23 @@ select:focus-visible,
 	margin: 0;
 }
 
+/* Quote directly below the hero: tighter than the closing band. */
+.quote-band--intro {
+	padding-block: var(--space-5);
+}
+
+/* Quote on one line, author beneath (as in the hero), where there is room. */
+@media (min-width: 64rem) {
+	.quote-band__quote {
+		max-width: none;
+		font-size: 2.1rem;
+	}
+
+	.quote-band__quote p {
+		white-space: nowrap;
+	}
+}
+
 .quote-band__quote cite {
 	display: block;
 	margin-top: var(--space-3);
@@ -1238,6 +1285,11 @@ select:focus-visible,
 	.site-footer__grid > div:nth-child(n + 2) {
 		padding-top: var(--space-4);
 	}
+}
+
+.site-footer__name {
+	font-weight: 600;
+	margin-bottom: 0.25rem;
 }
 
 .site-footer__nav-list {

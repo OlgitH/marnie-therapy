@@ -8,6 +8,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 $heading = get_sub_field( 'heading' ) ?: 'About Me';
+$name_line = get_sub_field( 'name_line' );
+if ( false === $name_line || null === $name_line ) {
+	$name_line = 'Marnie Kavanagh (formerly known as Marianne Black)';
+}
 $photo   = get_sub_field( 'photo' ); // attachment ID
 $content = get_sub_field( 'content' );
 ?>
@@ -19,7 +23,7 @@ $content = get_sub_field( 'content' );
 			<div class="about__photo<?php echo $photo ? '' : ' about__photo--placeholder'; ?>">
 				<?php if ( $photo ) : ?>
 					<?php
-					// Fixed ~20rem column on desktop, 10rem thumbnail on mobile
+					// Fixed ~20rem column on desktop, full width on mobile
 					// (matches the .about grid breakpoint in style.css) — the
 					// sizes attribute tells the browser exactly how large this
 					// will actually render, so it picks the smallest sufficient
@@ -31,7 +35,7 @@ $content = get_sub_field( 'content' );
 						false,
 						array(
 							'alt'      => $photo_alt ? $photo_alt : 'Portrait of Marnie',
-							'sizes'    => '(min-width: 56rem) 20rem, 10rem',
+							'sizes'    => '(min-width: 56rem) 20rem, min(100vw, 28rem)',
 							'loading'  => 'eager',
 							'decoding' => 'async',
 						)
@@ -45,6 +49,9 @@ $content = get_sub_field( 'content' );
 			</div>
 
 			<div>
+				<?php if ( $name_line ) : ?>
+					<p class="about__name"><?php echo esc_html( $name_line ); ?></p>
+				<?php endif; ?>
 				<?php if ( $content ) : ?>
 					<div class="prose"><?php echo wp_kses_post( $content ); ?></div>
 				<?php endif; ?>
