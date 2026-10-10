@@ -1245,6 +1245,12 @@ select:focus-visible,
 	object-position: center;
 }
 
+.contact__seal {
+	display: flex;
+	justify-content: center;
+	max-width: 100%;
+}
+
 .contact__map {
 	border-radius: var(--radius);
 	overflow: hidden;

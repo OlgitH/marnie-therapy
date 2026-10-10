@@ -613,6 +613,15 @@ function marnie_register_site_settings_fields() {
 					'preview_size'  => 'thumbnail',
 				),
 				array(
+					'key'           => 'field_mt_settings_show_pt_seal',
+					'label'         => 'Show Psychology Today Verified Seal',
+					'name'          => 'show_pt_seal',
+					'type'          => 'true_false',
+					'ui'            => 1,
+					'default_value' => 1,
+					'instructions'  => 'Shows the Psychology Today verified badge under the accreditation logos.',
+				),
+				array(
 					'key'   => 'field_mt_settings_meta_description',
 					'label' => 'SEO Meta Description',
 					'name'  => 'meta_description',

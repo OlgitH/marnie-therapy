@@ -18,6 +18,8 @@ $address      = get_field( 'practice_address', 'option' ) ?: "Bathwick\nBath, BA
 $map_embed    = get_field( 'map_embed_url', 'option' );
 $ukcp_logo    = get_field( 'ukcp_logo', 'option' );
 $bcpc_logo    = get_field( 'bcpc_logo', 'option' );
+$pt_setting   = get_field( 'show_pt_seal', 'option' );
+$show_pt_seal = null === $pt_setting ? true : (bool) $pt_setting; // on until switched off
 
 if ( ! $map_embed ) {
 	// Google's key-less embed endpoint: no WebGL dependency (unlike OSM's
@@ -138,13 +140,19 @@ if ( ! $map_embed ) {
 				<?php endif; ?>
 			</div>
 
-			<?php if ( $ukcp_logo || $bcpc_logo ) : ?>
+			<?php if ( $ukcp_logo || $bcpc_logo || $show_pt_seal ) : ?>
 				<div class="contact__logos">
 					<?php if ( $ukcp_logo ) : ?>
 						<img src="<?php echo esc_url( $ukcp_logo['sizes']['medium'] ?? $ukcp_logo['url'] ); ?>" alt="<?php echo esc_attr( $ukcp_logo['alt'] ?: 'UKCP — UK Council for Psychotherapy member' ); ?>" width="240" height="104" loading="lazy" />
 					<?php endif; ?>
 					<?php if ( $bcpc_logo ) : ?>
 						<img src="<?php echo esc_url( $bcpc_logo['sizes']['medium'] ?? $bcpc_logo['url'] ); ?>" alt="<?php echo esc_attr( $bcpc_logo['alt'] ?: 'Bath Centre for Counselling and Psychotherapy' ); ?>" width="240" height="104" loading="lazy" />
+					<?php endif; ?>
+					<?php if ( $show_pt_seal ) : ?>
+						<div class="contact__seal">
+							<a href="https://www.psychologytoday.com/profile/1446458" class="sx-verified-seal"></a>
+							<script type="text/javascript" src="https://member.psychologytoday.com/verified-seal.js" data-badge="15" data-id="1446458" data-code="aHR0cHM6Ly93d3cucHN5Y2hvbG9neXRvZGF5LmNvbS9hcGkvdmVyaWZpZWQtc2VhbC9zZWFscy8xNS9wcm9maWxlLzE0NDY0NTg/Y2FsbGJhY2s9c3hjYWxsYmFjaw=="></script>
+						</div>
 					<?php endif; ?>
 				</div>
 			<?php endif; ?>
