@@ -649,7 +649,9 @@ select:focus-visible,
 .hero__quote cite {
 	display: block;
 	margin-top: 0.75rem;
+	font-family: var(--font-body); /* same as the closing quote author */
 	font-style: normal;
+	font-weight: 600;
 	font-size: 1.05rem;
 	letter-spacing: 0.1em;
 	text-transform: uppercase;
