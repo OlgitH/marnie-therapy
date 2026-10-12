@@ -11,6 +11,8 @@ $heading = get_sub_field( 'heading' ) ?: 'Therapy';
 $content = get_sub_field( 'content' );
 $image   = get_sub_field( 'image' ); // attachment ID
 $zoom    = (int) get_sub_field( 'image_zoom' ) ?: 100;
+$image_2 = get_sub_field( 'image_2' ); // attachment ID, desktop only
+$zoom_2  = (int) get_sub_field( 'image_2_zoom' ) ?: 100;
 ?>
 <section class="section" id="therapy" aria-labelledby="therapy-heading">
 	<div class="container">
@@ -24,6 +26,7 @@ $zoom    = (int) get_sub_field( 'image_zoom' ) ?: 100;
 			</div>
 
 			<?php if ( $image ) : ?>
+				<div class="therapy-intro__aside">
 				<div class="therapy-intro__image" style="--photo-zoom: <?php echo esc_attr( max( 50, $zoom ) / 100 ); ?>">
 					<?php
 					// Fixed column on desktop, full-width below the text on
@@ -45,6 +48,24 @@ $zoom    = (int) get_sub_field( 'image_zoom' ) ?: 100;
 						)
 					);
 					?>
+				</div>
+				<?php if ( $image_2 ) : ?>
+					<div class="therapy-intro__image therapy-intro__image--extra" style="--photo-zoom: <?php echo esc_attr( max( 50, $zoom_2 ) / 100 ); ?>">
+						<?php
+						echo wp_get_attachment_image(
+							$image_2,
+							'large',
+							false,
+							array(
+								'alt'      => (string) get_post_meta( $image_2, '_wp_attachment_image_alt', true ),
+								'sizes'    => '22rem',
+								'loading'  => 'lazy',
+								'decoding' => 'async',
+							)
+						);
+						?>
+					</div>
+				<?php endif; ?>
 				</div>
 			<?php endif; ?>
 		</div>

@@ -818,6 +818,23 @@ select:focus-visible,
 	background-color: var(--color-cream-soft); /* shows when the photo is zoomed out below 100% */
 }
 
+.therapy-intro__aside {
+	display: grid;
+	gap: var(--space-3);
+	align-self: center;
+}
+
+.therapy-intro__aside .therapy-intro__image {
+	align-self: auto;
+}
+
+/* The extra image is desktop-only. */
+@media (max-width: 55.99rem) {
+	.therapy-intro__image--extra {
+		display: none;
+	}
+}
+
 .therapy-intro__image img {
 	/* The frame takes the photo's own shape, so nothing is cropped by default. */
 	width: 100%;
@@ -1002,13 +1019,6 @@ select:focus-visible,
 	}
 }
 
-/* Square corners on the laptop-and-up collage. */
-@media (min-width: 64rem) {
-	.faq__photo {
-		border-radius: 0;
-	}
-}
-
 .faq__photo img {
 	display: block;
 	width: 100%;
@@ -1116,9 +1126,19 @@ select:focus-visible,
 	}
 
 	.contact__main { grid-column: 1; grid-row: 1; }
-	.contact__map { grid-column: 2; grid-row: 1; }
+	.contact__map {
+		grid-column: 2;
+		grid-row: 1;
+		align-self: stretch;
+		margin-top: var(--space-3); /* top lines up with the first detail (Email), as the details list does */
+	}
 	.contact__enquiry { grid-column: 1; grid-row: 2; }
-	.contact__logos { grid-column: 2; grid-row: 2; }
+	.contact__logos {
+		grid-column: 2;
+		grid-row: 2;
+		/* Skip past the "Send an enquiry" heading (h3 line + margin) so the logos start level with the first input. */
+		margin-top: calc(var(--space-4) + 1.25rem * 1.25 + var(--space-2));
+	}
 }
 
 .contact__details {
