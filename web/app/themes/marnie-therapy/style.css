@@ -1133,11 +1133,12 @@ select:focus-visible,
 		margin-top: var(--space-3); /* top lines up with the first detail (Email), as the details list does */
 	}
 	.contact__enquiry { grid-column: 1; grid-row: 2; }
-	.contact__logos {
+	.contact .contact__logos {
 		grid-column: 2;
 		grid-row: 2;
-		/* Skip past the "Send an enquiry" heading (h3 line + margin) so the logos start level with the first input. */
-		margin-top: calc(var(--space-4) + 1.25rem * 1.25 + var(--space-2));
+		/* Skip past the "Send an enquiry" heading (h3 line + margin) and the Name/Email
+		   label line (1.7 line-height + 0.35rem gap) so the logos start level with the first inputs. */
+		margin-top: calc(var(--space-4) + 1.25rem * 1.25 + var(--space-2) + 1.0625rem * 1.7 + 0.35rem);
 	}
 }
 
@@ -1237,11 +1238,20 @@ select:focus-visible,
 
 .form-notice {
 	margin-top: var(--space-3);
+	scroll-margin-top: calc(var(--header-offset, var(--header-height)) + var(--space-4)); /* clear the sticky header when linked to */
 	padding: var(--space-2) var(--space-3);
 	border: 1px solid var(--color-sage-200);
 	border-radius: var(--radius);
 	background-color: var(--color-sage-50);
 	color: var(--color-sage-900);
+}
+
+/* Confirmation reads as plain text, not a bordered box that looks like an input. */
+.form-notice--sent {
+	padding: 0;
+	border: 0;
+	background: none;
+	font-weight: 500;
 }
 
 .form-notice--invalid,
@@ -1263,6 +1273,13 @@ select:focus-visible,
 	max-width: 100%;
 	object-fit: contain;
 	object-position: center;
+}
+
+@media (min-width: 56rem) {
+	/* Logo artwork starts at the top edge of its box, level with the input. */
+	.contact__logos img {
+		object-position: center top;
+	}
 }
 
 .contact__seal {

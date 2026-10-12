@@ -26,7 +26,7 @@ function marnie_contact_redirect( $status ) {
 	$base = wp_get_referer() ?: home_url( '/' );
 	$url  = add_query_arg( 'contact', $status, remove_query_arg( 'contact', $base ) );
 
-	wp_safe_redirect( $url . '#contact' );
+	wp_safe_redirect( $url . '#contact-status' );
 	exit;
 }
 
