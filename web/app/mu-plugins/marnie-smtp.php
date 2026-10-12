@@ -18,7 +18,7 @@ add_action(
 	function ( $phpmailer ) {
 		$phpmailer->isSMTP();
 		$phpmailer->Host       = 'smtp-relay.brevo.com';
-		$phpmailer->Port       = 587;
+		$phpmailer->Port       = 2525; // DigitalOcean blocks 587 and 465 outbound
 		$phpmailer->SMTPSecure = 'tls';
 		$phpmailer->SMTPAuth   = true;
 		$phpmailer->Username   = BREVO_SMTP_LOGIN;
