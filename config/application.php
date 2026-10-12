@@ -144,6 +144,12 @@ Config::define('NONCE_SALT', env('NONCE_SALT'));
 Config::define('AUTOMATIC_UPDATER_DISABLED', true);
 Config::define('DISABLE_WP_CRON', env('DISABLE_WP_CRON') ?: false);
 
+// Outgoing mail via Brevo SMTP (see web/app/mu-plugins/marnie-smtp.php)
+Config::define('BREVO_SMTP_LOGIN', env('BREVO_SMTP_LOGIN'));
+Config::define('BREVO_SMTP_KEY', env('BREVO_SMTP_KEY'));
+Config::define('MAIL_FROM_ADDRESS', env('MAIL_FROM_ADDRESS'));
+Config::define('MAIL_FROM_NAME', env('MAIL_FROM_NAME') ?: 'Marnie Therapy');
+
 // Disable the plugin and theme file editor in the admin
 Config::define('DISALLOW_FILE_EDIT', true);
 
